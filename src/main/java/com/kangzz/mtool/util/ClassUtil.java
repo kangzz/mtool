@@ -474,7 +474,7 @@ public class ClassUtil {
 	 * 非单例模式，如果是非静态方法，每次创建一个新对象
 	 * 
 	 * @param <T>
-	 * @param classNameDotMethodName 类名和方法名表达式，例如：com.xiaoleilu.hutool.StrUtil.isEmpty
+	 * @param classNameDotMethodName 类名和方法名表达式，例如：com.kangzz.mtool.StrUtil.isEmpty
 	 * @param args 参数，必须严格对应指定方法的参数类型和数量
 	 * @return 返回结果
 	 */
@@ -488,7 +488,7 @@ public class ClassUtil {
 	 * 执行非static方法时，必须满足对象有默认构造方法<br>
 	 * 
 	 * @param <T>
-	 * @param classNameDotMethodName 类名和方法名表达式，例如：com.xiaoleilu.hutool.StrUtil.isEmpty
+	 * @param classNameDotMethodName 类名和方法名表达式，例如：com.kangzz.mtool.StrUtil.isEmpty
 	 * @param isSingleton 是否为单例对象，如果此参数为false，每次执行方法时创建一个新对象
 	 * @param args 参数，必须严格对应指定方法的参数类型和数量
 	 * @return 返回结果

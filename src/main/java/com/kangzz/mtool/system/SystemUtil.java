@@ -1,11 +1,9 @@
 package com.kangzz.mtool.system;
 
-import com.xiaoleilu.hutool.lang.Conver;
-import com.xiaoleilu.hutool.lang.Singleton;
-import com.xiaoleilu.hutool.log.StaticLog;
-import com.xiaoleilu.hutool.system.HostInfo;
-import com.xiaoleilu.hutool.system.JavaSpecInfo;
-import com.xiaoleilu.hutool.util.StrUtil;
+import com.kangzz.mtool.lang.Conver;
+import com.kangzz.mtool.lang.Singleton;
+import com.kangzz.mtool.log.StaticLog;
+import com.kangzz.mtool.util.StrUtil;
 
 import java.io.PrintWriter;
 import java.util.Properties;
@@ -209,7 +207,7 @@ public class SystemUtil {
 	 * 
 	 * @return <code>JavaSpecInfo</code>对象
 	 */
-	public static final com.xiaoleilu.hutool.system.JavaSpecInfo getJavaSpecInfo() {
+	public static final com.kangzz.mtool.system.JavaSpecInfo getJavaSpecInfo() {
 		return Singleton.get(JavaSpecInfo.class);
 	}
 

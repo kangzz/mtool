@@ -6,9 +6,9 @@ package com.kangzz.mtool.system;
  */
 public class JvmSpecInfo {
 
-	private final String JAVA_VM_SPECIFICATION_NAME = com.xiaoleilu.hutool.system.SystemUtil.get("java.vm.specification.name", false);
-	private final String JAVA_VM_SPECIFICATION_VERSION = com.xiaoleilu.hutool.system.SystemUtil.get("java.vm.specification.version", false);
-	private final String JAVA_VM_SPECIFICATION_VENDOR = com.xiaoleilu.hutool.system.SystemUtil.get("java.vm.specification.vendor", false);
+	private final String JAVA_VM_SPECIFICATION_NAME = com.kangzz.mtool.system.SystemUtil.get("java.vm.specification.name", false);
+	private final String JAVA_VM_SPECIFICATION_VERSION = com.kangzz.mtool.system.SystemUtil.get("java.vm.specification.version", false);
+	private final String JAVA_VM_SPECIFICATION_VENDOR = com.kangzz.mtool.system.SystemUtil.get("java.vm.specification.vendor", false);
 
 	/**
 	 * 取得当前JVM spec.的名称（取自系统属性：<code>java.vm.specification.name</code>）。

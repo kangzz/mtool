@@ -5,10 +5,10 @@ package com.kangzz.mtool.system;
  */
 public class JvmInfo {
 
-	private final String JAVA_VM_NAME = com.xiaoleilu.hutool.system.SystemUtil.get("java.vm.name", false);
-	private final String JAVA_VM_VERSION = com.xiaoleilu.hutool.system.SystemUtil.get("java.vm.version", false);
-	private final String JAVA_VM_VENDOR = com.xiaoleilu.hutool.system.SystemUtil.get("java.vm.vendor", false);
-	private final String JAVA_VM_INFO = com.xiaoleilu.hutool.system.SystemUtil.get("java.vm.info", false);
+	private final String JAVA_VM_NAME = com.kangzz.mtool.system.SystemUtil.get("java.vm.name", false);
+	private final String JAVA_VM_VERSION = com.kangzz.mtool.system.SystemUtil.get("java.vm.version", false);
+	private final String JAVA_VM_VENDOR = com.kangzz.mtool.system.SystemUtil.get("java.vm.vendor", false);
+	private final String JAVA_VM_INFO = com.kangzz.mtool.system.SystemUtil.get("java.vm.info", false);
 
 	/**
 	 * 取得当前JVM impl.的名称（取自系统属性：<code>java.vm.name</code>）。

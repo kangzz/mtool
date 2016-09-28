@@ -6,12 +6,12 @@ package com.kangzz.mtool.system;
  */
 public class UserInfo{
 
-	private final String USER_NAME = com.xiaoleilu.hutool.system.SystemUtil.get("user.name", false);
-	private final String USER_HOME = com.xiaoleilu.hutool.system.SystemUtil.get("user.home", false);
-	private final String USER_DIR = com.xiaoleilu.hutool.system.SystemUtil.get("user.dir", false);
-	private final String USER_LANGUAGE = com.xiaoleilu.hutool.system.SystemUtil.get("user.language", false);
-	private final String USER_COUNTRY = ((com.xiaoleilu.hutool.system.SystemUtil.get("user.country", false) == null) ? com.xiaoleilu.hutool.system.SystemUtil.get("user.region", false) : com.xiaoleilu.hutool.system.SystemUtil.get("user.country", false));
-	private final String JAVA_IO_TMPDIR = com.xiaoleilu.hutool.system.SystemUtil.get("java.io.tmpdir", false);
+	private final String USER_NAME = com.kangzz.mtool.system.SystemUtil.get("user.name", false);
+	private final String USER_HOME = com.kangzz.mtool.system.SystemUtil.get("user.home", false);
+	private final String USER_DIR = com.kangzz.mtool.system.SystemUtil.get("user.dir", false);
+	private final String USER_LANGUAGE = com.kangzz.mtool.system.SystemUtil.get("user.language", false);
+	private final String USER_COUNTRY = ((com.kangzz.mtool.system.SystemUtil.get("user.country", false) == null) ? com.kangzz.mtool.system.SystemUtil.get("user.region", false) : com.kangzz.mtool.system.SystemUtil.get("user.country", false));
+	private final String JAVA_IO_TMPDIR = com.kangzz.mtool.system.SystemUtil.get("java.io.tmpdir", false);
 
 	/**
 	 * 取得当前登录用户的名字（取自系统属性：<code>user.name</code>）。

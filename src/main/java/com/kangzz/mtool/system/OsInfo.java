@@ -6,9 +6,9 @@ package com.kangzz.mtool.system;
  */
 public class OsInfo{
 
-	private final String OS_VERSION = com.xiaoleilu.hutool.system.SystemUtil.get("os.version", false);
-	private final String OS_ARCH = com.xiaoleilu.hutool.system.SystemUtil.get("os.arch", false);
-	private final String OS_NAME = com.xiaoleilu.hutool.system.SystemUtil.get("os.name", false);
+	private final String OS_VERSION = com.kangzz.mtool.system.SystemUtil.get("os.version", false);
+	private final String OS_ARCH = com.kangzz.mtool.system.SystemUtil.get("os.arch", false);
+	private final String OS_NAME = com.kangzz.mtool.system.SystemUtil.get("os.name", false);
 	private final boolean IS_OS_AIX = getOSMatches("AIX");
 	private final boolean IS_OS_HP_UX = getOSMatches("HP-UX");
 	private final boolean IS_OS_IRIX = getOSMatches("Irix");
@@ -27,9 +27,9 @@ public class OsInfo{
 	private final boolean IS_OS_WINDOWS_XP = getOSMatches("Windows", "5.1");
 
 	// 由于改变file.encoding属性并不会改变系统字符编码，为了保持一致，通过LocaleUtil取系统默认编码。
-	private final String FILE_SEPARATOR = com.xiaoleilu.hutool.system.SystemUtil.get("file.separator", false);
-	private final String LINE_SEPARATOR = com.xiaoleilu.hutool.system.SystemUtil.get("line.separator", false);
-	private final String PATH_SEPARATOR = com.xiaoleilu.hutool.system.SystemUtil.get("path.separator", false);
+	private final String FILE_SEPARATOR = com.kangzz.mtool.system.SystemUtil.get("file.separator", false);
+	private final String LINE_SEPARATOR = com.kangzz.mtool.system.SystemUtil.get("line.separator", false);
+	private final String PATH_SEPARATOR = com.kangzz.mtool.system.SystemUtil.get("path.separator", false);
 
 	/**
 	 * 取得当前OS的架构（取自系统属性：<code>os.arch</code>）。
