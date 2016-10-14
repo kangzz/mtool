@@ -39,7 +39,32 @@ public class DateUtil {
 	public final static String NORM_DATETIME_MS_PATTERN = "yyyy-MM-dd HH:mm:ss.SSS";
 	/** HTTP头中日期时间格式 */
 	public final static String HTTP_DATETIME_PATTERN = "EEE, dd MMM yyyy HH:mm:ss z";
+	/**
+	 * 日期格式:yyyy/mm/dd<br>
+	 * 例如:2005/11/02
+	 */
+	public final static String DATE_PATTERN_BIAS = "yyyy/MM/dd";
+	/**
+	 * 日期时间格式(24小时制):yyyy/mm/dd HH:mm:ss<br>
+	 * 例如:2005/11/02 23:01:01
+	 */
+	public final static String DATETIME24_PATTERN_BIAS = "yyyy/MM/dd HH:mm:ss";
+	/**
+	 * 日期时间格式(12小时制):yyyy/mm/dd hh:mm:ss<br>
+	 * 例如:2005/11/02 11:01:01
+	 */
+	public final static String DATETIME12_PATTERN_BIAS = "yyyy/MM/dd hh:mm:ss";
+	/**
+	 * 日期时间格式(24小时制):yyyy-mm-dd HH:mm:ss<br>
+	 * 例如:2005-11-02 23:01:01
+	 */
+	public final static String DATETIME24_NO_LINE = "yyyyMMddHHmmss";
 
+	/**
+	 * 日期时间格式(24小时制):yyyyMMdd<br>
+	 * 例如:20151217
+	 */
+	public static final String DATE_PATTERN = "yyyyMMdd";
 	/** 标准日期（不含时间）格式化器 */
 	// private final static SimpleDateFormat NORM_DATE_FORMAT = new SimpleDateFormat(NORM_DATE_PATTERN);
 	private static ThreadLocal<SimpleDateFormat> NORM_DATE_FORMAT = new ThreadLocal<SimpleDateFormat>(){
