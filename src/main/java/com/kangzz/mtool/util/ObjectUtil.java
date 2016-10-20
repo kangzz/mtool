@@ -171,7 +171,7 @@ public class ObjectUtil {
 	}
 
 	/**
-	 * 克隆对象<br>
+	 * 深层克隆对象<br>
 	 * 对象必须实现Serializable接口
 	 * 
 	 * @param obj 被克隆对象
