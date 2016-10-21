@@ -4,10 +4,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 /**
@@ -1288,5 +1285,12 @@ public class StrUtil {
 	 */
 	public static StringWriter getWriter() {
 		return new StringWriter();
+	}
+
+	/**
+	 * @return 简化的UUID，去掉了横线
+	 */
+	public static String simpleUUID(){
+		return UUID.randomUUID().toString().replace("-", "");
 	}
 }

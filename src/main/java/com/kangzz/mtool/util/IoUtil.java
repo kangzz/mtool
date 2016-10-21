@@ -3,6 +3,7 @@ package com.kangzz.mtool.util;
 
 import com.kangzz.mtool.exception.UtilException;
 import com.kangzz.mtool.io.FastByteArrayOutputStream;
+import com.kangzz.mtool.io.StreamProgress;
 import com.kangzz.mtool.lang.Conver;
 
 import java.io.*;
@@ -21,6 +22,8 @@ public class IoUtil {
 
 	/** 默认缓存大小 */
 	public final static int DEFAULT_BUFFER_SIZE = 1024;
+	/** 数据流末尾 */
+	public static final int EOF = -1;
 
 	//-------------------------------------------------------------------------------------- Copy start
 	/**
@@ -86,7 +89,45 @@ public class IoUtil {
 		
 		return count;
 	}
-	
+	/**
+	 * 拷贝流
+	 *
+	 * @param in 输入流
+	 * @param out 输出流
+	 * @param bufferSize 缓存大小
+	 * @param streamProgress 进度条
+	 * @return 传输的byte数
+	 * @throws IOException
+	 */
+	public static long copy(InputStream in, OutputStream out, int bufferSize, StreamProgress streamProgress) throws IOException {
+		if (null == in) {
+			throw new NullPointerException("InputStream is null!");
+		}
+		if (null == out) {
+			throw new NullPointerException("OutputStream is null!");
+		}
+		if (bufferSize <= 0) {
+			bufferSize = DEFAULT_BUFFER_SIZE;
+		}
+
+		byte[] buffer = new byte[bufferSize];
+		long size = 0;
+		if (null != streamProgress) {
+			streamProgress.start();
+		}
+		for (int readSize = -1; (readSize = in.read(buffer)) != EOF;) {
+			out.write(buffer, 0, readSize);
+			size += readSize;
+			out.flush();
+			if (null != streamProgress) {
+				streamProgress.progress(size);
+			}
+		}
+		if (null != streamProgress) {
+			streamProgress.finish();
+		}
+		return size;
+	}
 	/**
 	 * 拷贝文件流，使用NIO
 	 * @param in 输入
@@ -99,6 +140,35 @@ public class IoUtil {
 		FileChannel outChannel = out.getChannel();
 		
 		return inChannel.transferTo(0, inChannel.size(), outChannel);
+	}
+	/**
+	 * 将Reader中的内容复制到Writer中
+	 *
+	 * @param reader Reader
+	 * @param writer Writer
+	 * @param bufferSize 缓存大小
+	 * @return 传输的byte数
+	 * @throws IOException
+	 */
+	public static long copy(Reader reader, Writer writer, int bufferSize, StreamProgress streamProgress) throws IOException {
+		char[] buffer = new char[bufferSize];
+		long size = 0;
+		int readSize;
+		if (null != streamProgress) {
+			streamProgress.start();
+		}
+		while ((readSize = reader.read(buffer, 0, bufferSize)) != EOF) {
+			writer.write(buffer, 0, readSize);
+			size += readSize;
+			writer.flush();
+			if (null != streamProgress) {
+				streamProgress.progress(size);
+			}
+		}
+		if (null != streamProgress) {
+			streamProgress.finish();
+		}
+		return size;
 	}
 	//-------------------------------------------------------------------------------------- Copy end
 	
