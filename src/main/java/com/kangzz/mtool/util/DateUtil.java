@@ -622,4 +622,70 @@ public class DateUtil {
 		return new StringBuilder().append(cal.get(Calendar.YEAR)).append(cal.get(Calendar.MONTH) / 3 + 1).toString();
 	}
 	// ------------------------------------------------------------------------ Private method end
+	/**
+	 * 获取当前日期所在月的第一天的日期
+	 * @param current
+	 * @return
+	 */
+	public static Date getFirstDate(Date current) throws Exception {
+		try {
+			return new Date(current.getYear(), current.getMonth(), 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	/**
+	 * 获取当前日期所在月的最后一天的日期
+	 * @param current
+	 * @return
+	 * @throws Exception
+	 */
+	public static Date getLastDate(Date current) throws Exception {
+		try {
+			Calendar c = Calendar.getInstance();
+			c.setTime(new Date(current.getYear(), current.getMonth(), 1));
+			c.roll(Calendar.MONTH, true);
+			if (current.getMonth() == 11) {
+				c.roll(Calendar.YEAR, true);
+			}
+			c.add(Calendar.DATE, -1);
+			return c.getTime();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	/**
+	 * 是否闰年
+	 * @param year	年
+	 * @return
+	 */
+	public boolean isLeapYear(int year) {
+		return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+	}
+	/**
+	 * 获取某年某月的最后一天
+	 * @param year	年
+	 * @param month	月
+	 * @return 最后一天
+	 */
+	private int getLastDayOfMonth(int year, int month) {
+		if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8
+				|| month == 10 || month == 12) {
+			return 31;
+		}
+		if (month == 4 || month == 6 || month == 9 || month == 11) {
+			return 30;
+		}
+		if (month == 2) {
+			if (isLeapYear(year)) {
+				return 29;
+			} else {
+				return 28;
+			}
+		}
+		return 0;
+	}
 }
