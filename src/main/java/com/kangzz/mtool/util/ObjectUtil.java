@@ -15,7 +15,6 @@ import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Map;
-
 /**
  * 一些通用的函数
  * 
@@ -291,4 +290,13 @@ public class ObjectUtil {
 		}
 		return obj.getClass().isArray();
 	}
+	/**
+	 * 描述：如果 object is null return defaultValue
+	 * 作者 ：kangzz
+	 * 日期 ：2016-10-31 20:24:20
+	 */
+	public static Object defaultIfNull(Object object, Object defaultValue) {
+		return object != null?object:defaultValue;
+	}
+
 }
