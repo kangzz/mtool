@@ -716,4 +716,30 @@ public class CollectionUtil {
 	public static boolean isArray(Object obj) {
 		return obj.getClass().isArray();
 	}
+	/**
+	 * 描述：是否为空
+	 * 作者 ：kangzz
+	 * 日期 ：2016-11-01 09:42:01
+	 */
+	public static boolean sizeIsEmpty(Object object) {
+		if(object instanceof Collection) {
+			return ((Collection)object).isEmpty();
+		} else if(object instanceof Map) {
+			return ((Map)object).isEmpty();
+		} else if(object instanceof Object[]) {
+			return ((Object[])((Object[])object)).length == 0;
+		} else if(object instanceof Iterator) {
+			return !((Iterator)object).hasNext();
+		} else if(object instanceof Enumeration) {
+			return !((Enumeration)object).hasMoreElements();
+		} else if(object == null) {
+			throw new IllegalArgumentException("Unsupported object type: null");
+		} else {
+			try {
+				return Array.getLength(object) == 0;
+			} catch (IllegalArgumentException var2) {
+				throw new IllegalArgumentException("Unsupported object type: " + object.getClass().getName());
+			}
+		}
+	}
 }

@@ -3,6 +3,8 @@ package com.kangzz.mtool.util;
 
 import com.kangzz.mtool.exception.UtilException;
 import com.kangzz.mtool.io.FastByteArrayOutputStream;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -297,6 +299,38 @@ public class ObjectUtil {
 	 */
 	public static Object defaultIfNull(Object object, Object defaultValue) {
 		return object != null?object:defaultValue;
+	}
+	/**
+	 * 描述：对象为null 或者为空
+	 * 作者 ：kangzz
+	 * 日期 ：2016-11-01 09:44:52
+	 */
+	public static boolean isNullOrEmpty(Object value){
+		if (null == value){
+			return true;
+		}
+		// 字符串
+		if (value instanceof CharSequence){
+			return ((CharSequence) value).length() == 0;
+		}
+		// collections 支持的类型
+		if (isCollectionsSupportType(value)){
+			return CollectionUtils.sizeIsEmpty(value);
+		}
+		return false;
+	}
+	/**
+	 * 描述：判断是 Collections Type
+	 * 作者 ：kangzz
+	 * 日期 ：2016-11-01 09:44:29
+	 */
+	private static boolean isCollectionsSupportType(Object value){
+		return value instanceof Collection // 集合
+				|| value instanceof Map// map
+				|| value instanceof Enumeration // 枚举
+				|| value instanceof Iterator// Iterator迭代器
+				|| value.getClass().isArray()//判断数组
+				;
 	}
 
 }
