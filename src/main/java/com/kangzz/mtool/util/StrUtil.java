@@ -1299,7 +1299,7 @@ public class StrUtil {
 	 * 作者 ：kangzz
 	 * 日期 ：2016-11-02 21:22:00
 	 */
-	public static List<String> changeStrTo(String str,String sepStr){
+	public static List<String> changeStrToList(String str,String sepStr){
 		List<String> returnList = new ArrayList<String>();
 		if(isBlank(str)){
 			return returnList;
