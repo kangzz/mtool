@@ -1293,4 +1293,22 @@ public class StrUtil {
 	public static String simpleUUID(){
 		return UUID.randomUUID().toString().replace("-", "");
 	}
+
+	/**
+	 * 描述：根据指定切分字符拆分字符串为List
+	 * 作者 ：kangzz
+	 * 日期 ：2016-11-02 21:22:00
+	 */
+	public static List<String> changeStrTo(String str,String sepStr){
+		List<String> returnList = new ArrayList<String>();
+		if(isBlank(str)){
+			return returnList;
+		}
+
+		String[] strArr = str.split(sepStr);
+		for (int i = 0; i < strArr.length; i++) {
+			returnList.add(strArr[i]);
+		}
+		return returnList;
+	}
 }
