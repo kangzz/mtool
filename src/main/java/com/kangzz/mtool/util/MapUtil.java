@@ -87,10 +87,10 @@ public class MapUtil {
 	 * 日期 ：2016-11-25 13:26:45
 	 */
 	public static <K,V> List<K> getKeys(Map<K, V> map){
-		if(ObjectUtil.isNull(map)){
-			throw new UtilException(StrUtil.format("MapUtil {} map Can not be null !", "getKeys"));
-		}
 		ArrayList<K> array = CollectionUtil.newArrayList();
+		if(ObjectUtil.isNull(map)){
+			return array;
+		}
 		for (K key : map.keySet()) {
 			array.add(key);
 		}
@@ -102,14 +102,22 @@ public class MapUtil {
 	 * 日期 ：2016-11-25 13:26:45
 	 */
 	public static <K,V> List<V> getValues(Map<K, V> map){
-		if(ObjectUtil.isNull(map)){
-			throw new UtilException(StrUtil.format("MapUtil {} map Can not be null !", "getValues"));
-		}
 		ArrayList<V> array = CollectionUtil.newArrayList();
+		if(ObjectUtil.isNull(map)){
+			return array;
+		}
 		for (V value : map.values()) {
 			array.add(value);
 		}
 		return array;
+	}
+	/**
+	 * 描述：获取Map内元素个数
+	 * 作者 ：kangzz
+	 * 日期 ：2016-11-25 13:32:06
+	 */
+	public static <K,V> Long getMapSize(Map<K, V> map){
+		return map != null ? map.size() : 0L;
 	}
 	/**
 	 * 描述：根据负载因子new HashMap
