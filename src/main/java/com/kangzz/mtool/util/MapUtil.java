@@ -33,8 +33,8 @@ public class MapUtil {
 	 * 日期 ：2016-10-31 20:28:05
 	 */
 	public static <K, V> void putAllIfNotNull(final Map<K, V> map, Map<? extends K, ? extends V> m) {
-		if (null != map && null != m) {
-			map.putAll(m);// m 如果是null 会报错
+		if (null != map && null != m && !m.isEmpty()) {
+			map.putAll(m);
 		}
 	}
 	/**
@@ -66,6 +66,50 @@ public class MapUtil {
 		list.add(value);
 		map.put(key, list);
 		return map;
+	}
+	/**
+	 * 描述：map 移除key
+	 * 作者 ：kangzz
+	 * 日期 ：2016-11-25 12:13:26
+	 */
+	public static <K, V> Map<K, List<V>> removeKey(Map<K, List<V>> map, K key){
+		if(ObjectUtil.isNull(map)){
+			throw new UtilException(StrUtil.format("MapUtil {} map Can not be null !", "removeKey"));
+		}
+		if(map.containsKey(key)){
+			map.remove(key);
+		}
+		return map;
+	}
+	/**
+	 * 描述：获取所有key集合
+	 * 作者 ：kangzz
+	 * 日期 ：2016-11-25 13:26:45
+	 */
+	public static <K,V> List<K> getKeys(Map<K, V> map){
+		if(ObjectUtil.isNull(map)){
+			throw new UtilException(StrUtil.format("MapUtil {} map Can not be null !", "getKeys"));
+		}
+		ArrayList<K> array = CollectionUtil.newArrayList();
+		for (K key : map.keySet()) {
+			array.add(key);
+		}
+		return array;
+	}
+	/**
+	 * 描述：获取所有value集合
+	 * 作者 ：kangzz
+	 * 日期 ：2016-11-25 13:26:45
+	 */
+	public static <K,V> List<V> getValues(Map<K, V> map){
+		if(ObjectUtil.isNull(map)){
+			throw new UtilException(StrUtil.format("MapUtil {} map Can not be null !", "getValues"));
+		}
+		ArrayList<V> array = CollectionUtil.newArrayList();
+		for (V value : map.values()) {
+			array.add(value);
+		}
+		return array;
 	}
 	/**
 	 * 描述：根据负载因子new HashMap
