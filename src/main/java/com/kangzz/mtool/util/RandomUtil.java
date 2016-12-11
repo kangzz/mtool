@@ -30,7 +30,6 @@ public final class RandomUtil{
 
     public static final Random JVM_RANDOM = new Random();
     private RandomUtil(){
-
     }
     //  定义所有的字符组成的串
     public static final String allChar = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
