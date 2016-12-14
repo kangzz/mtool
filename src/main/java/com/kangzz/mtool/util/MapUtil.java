@@ -2,6 +2,10 @@ package com.kangzz.mtool.util;
 
 import com.kangzz.mtool.exception.UtilException;
 
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -151,4 +155,49 @@ public class MapUtil {
 		//This is the calculation used in JDK8 to resize when a putAll happens it seems to be the most conservative calculation we can make.
 		return (int) (size / 0.75f) + 1;//0.75 is the default load factor
 	}
+	/**
+	 * 描述：Map数据封装到Object中
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-14 10:55:24
+	 */
+	public static <T> T parseObject(Map<String,Object> map, Class<T> clazz) throws Exception {
+		if (map == null || map.isEmpty()){
+			return null;
+		}
+		T obj = clazz.newInstance();
+		BeanInfo beanInfo = Introspector.getBeanInfo(obj.getClass());
+		PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+		for (PropertyDescriptor property : propertyDescriptors) {
+			Method setter = property.getWriteMethod();
+			if (setter != null) {
+				setter.invoke(obj, map.get(property.getName()));
+			}
+		}
+		return obj;
+	}
+	/**
+	 * 描述：Object To Map
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-14 11:06:40
+	 */
+	public static Map<String, Object> parseObjectToMap(Object obj) throws Exception {
+		if(obj == null){
+			return null;
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		BeanInfo beanInfo = Introspector.getBeanInfo(obj.getClass());
+		PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+		for (PropertyDescriptor property : propertyDescriptors) {
+			String key = property.getName();
+			if (key.compareToIgnoreCase("class") == 0) {
+				continue;
+			}
+			Method getter = property.getReadMethod();
+			Object value = getter!=null ? getter.invoke(obj) : null;
+			map.put(key, value);
+		}
+		return map;
+	}
+
+
 }
