@@ -1,8 +1,11 @@
-package com.kangzz.mtool.util;
+package com.kangzz.mtool.securt;
 
 
 import com.kangzz.mtool.exception.UtilException;
 import com.kangzz.mtool.lang.Conver;
+import com.kangzz.mtool.util.FileUtil;
+import com.kangzz.mtool.util.IoUtil;
+import com.kangzz.mtool.util.StrUtil;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;

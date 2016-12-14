@@ -1,6 +1,8 @@
 package utils;
 
 
+import com.kangzz.mtool.getter.BasicTypeGetter;
+import com.kangzz.mtool.getter.OptNullBasicTypeFromObjectGetter;
 import com.kangzz.mtool.lang.Console;
 import com.kangzz.mtool.util.MapUtil;
 import org.junit.Test;

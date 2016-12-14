@@ -1,5 +1,7 @@
 package com.kangzz.mtool.util;
 
+import com.kangzz.mtool.exception.UtilException;
+
 import java.lang.reflect.Array;
 import java.util.*;
 import java.util.Map.Entry;
@@ -741,5 +743,37 @@ public class CollectionUtil {
 				throw new IllegalArgumentException("Unsupported object type: " + object.getClass().getName());
 			}
 		}
+	}
+	public static String toString(Object obj) {
+		if (null == obj) {
+			return null;
+		}
+		if (isArray(obj)) {
+			try {
+				return Arrays.deepToString((Object[]) obj);
+			} catch (Exception e) {
+				final String className = obj.getClass().getComponentType().getName();
+				if (className.equals("long")) {
+					return Arrays.toString((long[]) obj);
+				} else if (className.equals("int")) {
+					return Arrays.toString((int[]) obj);
+				} else if (className.equals("short")) {
+					return Arrays.toString((short[]) obj);
+				} else if (className.equals("char")) {
+					return Arrays.toString((char[]) obj);
+				} else if (className.equals("byte")) {
+					return Arrays.toString((byte[]) obj);
+				} else if (className.equals("boolean")) {
+					return Arrays.toString((boolean[]) obj);
+				} else if (className.equals("float")) {
+					return Arrays.toString((float[]) obj);
+				} else if (className.equals("double")) {
+					return Arrays.toString((double[]) obj);
+				} else {
+					throw new UtilException(e);
+				}
+			}
+		}
+		return obj.toString();
 	}
 }

@@ -9,10 +9,9 @@ import java.io.PrintWriter;
 import java.util.Properties;
 
 /**
- * Java的System类封装工具类。
- * 
- * @author Looly
- *
+ * 描述：Java的System类封装工具类。
+ * 作者 ：kangzz
+ * 日期 ：2016-11-25 14:36:53
  */
 public class SystemUtil {
 	/***** Java运行时环境信息 *****/
