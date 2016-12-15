@@ -1,17 +1,13 @@
 package com.kangzz.mtool.secure.impl;
 
-import com.kangzz.mtool.enums.FileType;
 import com.kangzz.mtool.exception.UtilException;
 import com.kangzz.mtool.secure.AbstractSecure;
 import com.kangzz.mtool.secure.DigestUtil;
-import com.kangzz.mtool.secure.SecureException;
 import com.kangzz.mtool.util.FileUtil;
 import com.kangzz.mtool.util.IoUtil;
-import com.kangzz.mtool.util.StrUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -33,7 +29,6 @@ public class DigestSecure extends AbstractSecure {
         FileOutputStream outputStream = null;
         try {
             in = FileUtil.getInputStream(file);
-            FileType fileType = FileUtil.getType(in);
             encryptFile = File.createTempFile(FileUtil.mainName(file),"."+FileUtil.extName(file));
             outputStream = new FileOutputStream(encryptFile);
             outputStream.write(DigestUtil.digest(DigestUtil.getDigest(secureType), in));

@@ -1,13 +1,17 @@
 package com.kangzz.mtool.secure.impl;
 
 import com.kangzz.mtool.enums.FileType;
+import com.kangzz.mtool.lang.Base64;
 import com.kangzz.mtool.secure.AbstractSecure;
 import com.kangzz.mtool.util.FileUtil;
+import com.kangzz.mtool.util.HexUtil;
 import com.kangzz.mtool.util.IoUtil;
+import com.kangzz.mtool.util.StrUtil;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
+import java.security.Key;
 import java.security.SecureRandom;
 
 /**
@@ -16,14 +20,25 @@ import java.security.SecureRandom;
 public class AesSecure  extends AbstractSecure{
     @Override
     public byte[] encrypt(byte[] data, String key) throws IllegalArgumentException {
-        return super.encrypt(data, key);
+        try {
+            Cipher cipher = initAESCipher(key,Cipher.ENCRYPT_MODE);
+            byte[] result = cipher.doFinal(data);
+            return result; // 加密
+        } catch (Exception e) {
+            throw new SecurityException(e);
+        }
     }
 
     @Override
     public byte[] decrypt(byte[] data, String key) throws IllegalArgumentException {
-        return super.decrypt(data, key);
+        try {
+            Cipher cipher = initAESCipher(key,Cipher.DECRYPT_MODE);
+            byte[] result = cipher.doFinal(data);
+            return result; // 解密
+        } catch (Exception e) {
+            throw new SecurityException(e);
+        }
     }
-
     @Override
     public File encrypt(File sourceFile, String sKey) throws IllegalArgumentException {
         //新建临时加密文件
@@ -85,11 +100,16 @@ public class AesSecure  extends AbstractSecure{
         Cipher cipher;
         try {
             keyGenerator = KeyGenerator.getInstance("AES");
-            keyGenerator.init(128, new SecureRandom(sKey.getBytes()));
+            SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG" );
+            secureRandom.setSeed(sKey.getBytes());
+            // 根据密钥初始化密钥生成器
+            keyGenerator.init(128, secureRandom);
+            //keyGenerator.init(128, new SecureRandom(sKey.getBytes()));
             SecretKey secretKey = keyGenerator.generateKey();
             byte[] codeFormat = secretKey.getEncoded();
             SecretKeySpec key = new SecretKeySpec(codeFormat, "AES");
-            cipher = Cipher.getInstance("AES");
+            //cipher = Cipher.getInstance("AES");
+            cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
             //初始化
             cipher.init(cipherMode, key);
         } catch (Exception e) {

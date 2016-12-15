@@ -3,6 +3,7 @@ package com.kangzz.mtool.secure;
 
 import com.kangzz.mtool.convert.ConvertException;
 import com.kangzz.mtool.lang.Console;
+import com.kangzz.mtool.secure.impl.AesSecure;
 import com.kangzz.mtool.secure.impl.DigestSecure;
 
 import java.io.File;
@@ -91,38 +92,31 @@ public class SecureRegistry {
 		}
 		return secure.encrypt(file);
 	}
-
-
-
-
-
-
-
-	public byte[] encrypt(String type, byte[] data, String key) {
-		Secure secure = getSecure(type);
+	public byte[] encrypt(SecureUtil.OrderSecure secureType, byte[] data, String key) {
+		Secure secure = getSecure(secureType.getValue());
 		if (null == secure) {
-			throw new ConvertException("No Secure for type [{}]", type);
+			throw new ConvertException("No Secure for type [{}]", secureType.getValue());
 		}
 		return secure.encrypt(data, key);
 	}
-	public File encrypt(String type,File file, String key){
-		Secure secure = getSecure(type);
+	public File encrypt(SecureUtil.OrderSecure secureType,File file, String key){
+		Secure secure = getSecure(secureType.getValue());
 		if (null == secure) {
-			throw new ConvertException("No Secure for type [{}]", type);
+			throw new ConvertException("No Secure for type [{}]", secureType.getValue());
 		}
 		return secure.encrypt(file,key);
 	}
-	public byte[] decrypt(String type, byte[] data, String key) {
-		Secure secure = getSecure(type);
+	public byte[] decrypt(SecureUtil.OrderSecure secureType, byte[] data, String key) {
+		Secure secure = getSecure(secureType.getValue());
 		if (null == secure) {
-			throw new ConvertException("No Secure for type [{}]", type);
+			throw new ConvertException("No Secure for type [{}]", secureType.getValue());
 		}
 		return secure.decrypt(data, key);
 	}
-	public File decrypt(String type, File file, String key) {
-		Secure secure = getSecure(type);
+	public File decrypt(SecureUtil.OrderSecure secureType, File file, String key) {
+		Secure secure = getSecure(secureType.getValue());
 		if (null == secure) {
-			throw new ConvertException("No Secure for type [{}]", type);
+			throw new ConvertException("No Secure for type [{}]", secureType.getValue());
 		}
 		return secure.decrypt(file, key);
 	}
@@ -141,6 +135,7 @@ public class SecureRegistry {
 		defaultSecure.put(DigestUtil.Algorithm.SHA348.getValue(), new DigestSecure(DigestUtil.Algorithm.SHA348.getValue()));
 		defaultSecure.put(DigestUtil.Algorithm.SHA512.getValue(), new DigestSecure(DigestUtil.Algorithm.SHA512.getValue()));
 
+		defaultSecure.put("AES", new AesSecure());
 		return this;
 	}
 	//----------------------------------------------------------- Private method end
