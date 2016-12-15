@@ -32,8 +32,7 @@ public class AesSecure  extends AbstractSecure{
         OutputStream outputStream = null;
         try {
             inputStream = new FileInputStream(sourceFile);
-            FileType fileType = FileUtil.getType(inputStream);
-            encryptFile = File.createTempFile(sourceFile.getName(), fileType.getValue());
+            encryptFile = File.createTempFile(FileUtil.mainName(sourceFile),"."+FileUtil.extName(sourceFile));
             outputStream = new FileOutputStream(encryptFile);
             Cipher cipher = initAESCipher(sKey,Cipher.ENCRYPT_MODE);
             //以加密流写入文件
@@ -62,8 +61,7 @@ public class AesSecure  extends AbstractSecure{
         try {
             Cipher cipher = initAESCipher(key,Cipher.DECRYPT_MODE);
             inputStream = new FileInputStream(sourceFile);
-            FileType fileType = FileUtil.getType(inputStream);
-            decryptFile = File.createTempFile(sourceFile.getName(),fileType.getValue());
+            decryptFile = File.createTempFile(FileUtil.mainName(sourceFile),"."+FileUtil.extName(sourceFile));
             outputStream = new FileOutputStream(decryptFile);
             CipherOutputStream cipherOutputStream = new CipherOutputStream(outputStream, cipher);
             byte [] buffer = new byte [1024];

@@ -34,7 +34,7 @@ public class DigestSecure extends AbstractSecure {
         try {
             in = FileUtil.getInputStream(file);
             FileType fileType = FileUtil.getType(in);
-            encryptFile = File.createTempFile(file.getName(), fileType.getValue());
+            encryptFile = File.createTempFile(FileUtil.mainName(file),"."+FileUtil.extName(file));
             outputStream = new FileOutputStream(encryptFile);
             outputStream.write(DigestUtil.digest(DigestUtil.getDigest(secureType), in));
             outputStream.flush();
