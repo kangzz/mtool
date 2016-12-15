@@ -1,17 +1,12 @@
 package com.kangzz.mtool.secure.impl;
 
-import com.kangzz.mtool.enums.FileType;
-import com.kangzz.mtool.lang.Base64;
 import com.kangzz.mtool.secure.AbstractSecure;
 import com.kangzz.mtool.util.FileUtil;
-import com.kangzz.mtool.util.HexUtil;
 import com.kangzz.mtool.util.IoUtil;
-import com.kangzz.mtool.util.StrUtil;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
-import java.security.Key;
 import java.security.SecureRandom;
 
 /**
