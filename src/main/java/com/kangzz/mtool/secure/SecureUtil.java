@@ -118,6 +118,16 @@ public class SecureUtil {
 	public static String decryptAES(String data, String key) {
 		return new String(decrypt(OrderSecure.AES,HexUtil.parseHexStr2Byte(data),key));
 	}
+
+	public static String encryptDES(String data, String key) {
+		return HexUtil.parseByte2HexStr(encrypt(OrderSecure.DES,StrUtil.bytes(data, CharsetUtil.UTF_8),key));
+	}
+	public static String decryptDES(String data, String key) {
+		return new String(decrypt(OrderSecure.DES,HexUtil.parseHexStr2Byte(data),key));
+	}
+
+
+
 	public static byte[] encrypt(DigestUtil.Algorithm algorithm, byte[] data){
 		return SecureRegistry.getInstance().encrypt(algorithm,data);
 	}

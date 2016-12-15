@@ -4,6 +4,7 @@ package com.kangzz.mtool.secure;
 import com.kangzz.mtool.convert.ConvertException;
 import com.kangzz.mtool.lang.Console;
 import com.kangzz.mtool.secure.impl.AesSecure;
+import com.kangzz.mtool.secure.impl.DesSecure;
 import com.kangzz.mtool.secure.impl.DigestSecure;
 
 import java.io.File;
@@ -135,7 +136,8 @@ public class SecureRegistry {
 		defaultSecure.put(DigestUtil.Algorithm.SHA348.getValue(), new DigestSecure(DigestUtil.Algorithm.SHA348.getValue()));
 		defaultSecure.put(DigestUtil.Algorithm.SHA512.getValue(), new DigestSecure(DigestUtil.Algorithm.SHA512.getValue()));
 
-		defaultSecure.put("AES", new AesSecure());
+		defaultSecure.put("AES", new AesSecure("AES","SHA1PRNG","AES/ECB/PKCS5Padding"));
+		defaultSecure.put("DES", new DesSecure("DES","DES/CBC/PKCS5Padding","12345678"));
 		return this;
 	}
 	//----------------------------------------------------------- Private method end

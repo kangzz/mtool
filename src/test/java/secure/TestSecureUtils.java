@@ -18,6 +18,9 @@ public class TestSecureUtils {
         Console.log(SecureUtil.encryptAES("张三喊口号的发掘的死卡死机12121jkhjkhk","8w091ql5l2tt6qxj"));
         String bbbb = SecureUtil.encryptAES("张三喊口号的发掘的死卡死机12121jkhjkhk","8w091ql5l2tt6qxj");
         Console.log(SecureUtil.decryptAES(bbbb,"8w091ql5l2tt6qxj"));
+        Console.log("encryptDES:"+SecureUtil.encryptDES("张三喊口号的发掘的死卡死机12121jkhjkhk","8w091ql5l2tt6qxj"));
+        bbbb = SecureUtil.encryptDES("张三喊口号的发掘的死卡死机12121jkhjkhk","8w091ql5l2tt6qxj");
+        Console.log("decryptDES:"+SecureUtil.decryptDES(bbbb,"8w091ql5l2tt6qxj"));
         Console.log("12");
     }
 }

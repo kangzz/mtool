@@ -10,9 +10,21 @@ import java.io.*;
 import java.security.SecureRandom;
 
 /**
- * Created by kangzz on 16/12/15.
+ * 描述：AES加密
+ * 作者 ：kangzz
+ * 日期 ：2016-12-15 23:24:58
  */
 public class AesSecure  extends AbstractSecure{
+    private String keyGeneratorInstance;
+    private String secureRandomInstance;;
+    private String cipherInstance;
+
+    public AesSecure(String keyGeneratorInstance, String secureRandomInstance, String cipherInstance) {
+        this.keyGeneratorInstance = keyGeneratorInstance;
+        this.secureRandomInstance = secureRandomInstance;
+        this.cipherInstance = cipherInstance;
+    }
+
     @Override
     public byte[] encrypt(byte[] data, String key) throws IllegalArgumentException {
         try {
@@ -94,19 +106,17 @@ public class AesSecure  extends AbstractSecure{
         KeyGenerator keyGenerator;
         Cipher cipher;
         try {
-            keyGenerator = KeyGenerator.getInstance("AES");
-            SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG" );
+            keyGenerator = KeyGenerator.getInstance(keyGeneratorInstance);
+            SecureRandom secureRandom = SecureRandom.getInstance(secureRandomInstance);
             secureRandom.setSeed(sKey.getBytes());
             // 根据密钥初始化密钥生成器
             keyGenerator.init(128, secureRandom);
-            //keyGenerator.init(128, new SecureRandom(sKey.getBytes()));
             SecretKey secretKey = keyGenerator.generateKey();
             byte[] codeFormat = secretKey.getEncoded();
-            SecretKeySpec key = new SecretKeySpec(codeFormat, "AES");
-            //cipher = Cipher.getInstance("AES");
-            cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            SecretKeySpec key = new SecretKeySpec(codeFormat, keyGeneratorInstance);
+            cipher = Cipher.getInstance(cipherInstance);
             //初始化
-            cipher.init(cipherMode, key);
+            cipher.init(cipherMode, key , secureRandom);
         } catch (Exception e) {
             throw new SecurityException(e);
         }
