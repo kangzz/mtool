@@ -17,14 +17,14 @@ public abstract class AbstractConverter<T> implements Converter<T>{
 	@Override
 	@SuppressWarnings("unchecked")
 	public T convert(Object value, T defaultValue) {
-		Class<T> targetType = getTargetType();
+		Class<T> targetType = this.getTargetType();
 		if(null == targetType){
 			targetType = (Class<T>) defaultValue.getClass();
 		}
 		
 		if(targetType.isPrimitive()){
 			//原始类型直接调用内部转换，内部转换永远不会返回null
-			return convertInternal(value);
+			return this.convertInternal(value);
 		}
 		
 		if(null == value){
@@ -35,7 +35,7 @@ public abstract class AbstractConverter<T> implements Converter<T>{
 				//已经是目标类型，不需要转换
 				return (T) targetType.cast(value);
 			}
-			final T convertInternal = convertInternal(value);
+			final T convertInternal = this.convertInternal(value);
 			return ((null == convertInternal) ? defaultValue : convertInternal);
 		}else{
 			throw new IllegalArgumentException(MessageFormat.format("Default value [{0}] is not the instance of [{1}]]", defaultValue, targetType));

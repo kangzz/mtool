@@ -1,6 +1,7 @@
 package com.kangzz.mtool.getter;
 
-import com.kangzz.mtool.lang.Conver;
+
+import com.kangzz.mtool.convert.Convert;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -18,56 +19,56 @@ public abstract class OptNullBasicTypeFromObjectGetter<K> extends OptNullBasicTy
 	
 	@Override
 	public String getStr(K key, String defaultValue) {
-		return Conver.toStr(getObj(key), defaultValue);
+		return Convert.toStr(getObj(key), defaultValue);
 	}
 	
 	@Override
 	public Integer getInt(K key, Integer defaultValue) {
-		return Conver.toInt(getObj(key), defaultValue);
+		return Convert.toInt(getObj(key), defaultValue);
 	}
 
 	@Override
 	public Short getShort(K key, Short defaultValue) {
-		return Conver.toShort(getObj(key), defaultValue);
+		return Convert.toShort(getObj(key), defaultValue);
 	}
 
 	@Override
 	public Boolean getBool(K key, Boolean defaultValue) {
-		return Conver.toBool(getObj(key), defaultValue);
+		return Convert.toBool(getObj(key), defaultValue);
 	}
 
 	@Override
 	public Long getLong(K key, Long defaultValue) {
-		return Conver.toLong(getObj(key), defaultValue);
+		return Convert.toLong(getObj(key), defaultValue);
 	}
 
 	@Override
 	public Character getChar(K key, Character defaultValue) {
-		return Conver.toChar(getObj(key), defaultValue);
+		return Convert.toChar(getObj(key), defaultValue);
 	}
 	
 	@Override
 	public Float getFloat(K key, Float defaultValue) {
-		return Conver.toFloat(getObj(key), defaultValue);
+		return Convert.toFloat(getObj(key), defaultValue);
 	}
 
 	@Override
 	public Double getDouble(K key, Double defaultValue) {
-		return Conver.toDouble(getObj(key), defaultValue);
+		return Convert.toDouble(getObj(key), defaultValue);
 	}
 
 	@Override
 	public Byte getByte(K key, Byte defaultValue) {
-		return Conver.toByte(getObj(key), defaultValue);
+		return Convert.toByte(getObj(key), defaultValue);
 	}
 
 	@Override
 	public BigDecimal getBigDecimal(K key, BigDecimal defaultValue) {
-		return Conver.toBigDecimal(getObj(key), defaultValue);
+		return Convert.toBigDecimal(getObj(key), defaultValue);
 	}
 
 	@Override
 	public BigInteger getBigInteger(K key, BigInteger defaultValue) {
-		return Conver.toBigInteger(getObj(key), defaultValue);
+		return Convert.toBigInteger(getObj(key), defaultValue);
 	}
 }

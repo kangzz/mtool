@@ -1,6 +1,6 @@
 package com.kangzz.mtool.system;
 
-import com.kangzz.mtool.lang.Conver;
+import com.kangzz.mtool.convert.Convert;
 import com.kangzz.mtool.lang.Singleton;
 import com.kangzz.mtool.log.StaticLog;
 import com.kangzz.mtool.util.StrUtil;
@@ -161,7 +161,7 @@ public class SystemUtil {
 	 * @return 值
 	 */
 	public static long getInt(String key, int defaultValue) {
-		return Conver.toInt(get(key), defaultValue);
+		return Convert.toInt(get(key), defaultValue);
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class SystemUtil {
 	 * @return 值
 	 */
 	public static long getLong(String key, long defaultValue) {
-		return Conver.toLong(get(key), defaultValue);
+		return Convert.toLong(get(key), defaultValue);
 	}
 
 	/**

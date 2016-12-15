@@ -1,7 +1,7 @@
 package com.kangzz.mtool.util;
 
+import com.kangzz.mtool.convert.Convert;
 import com.kangzz.mtool.exception.UtilException;
-import com.kangzz.mtool.lang.Conver;
 import org.apache.commons.lang.math.NumberUtils;
 
 import java.math.BigDecimal;
@@ -42,7 +42,7 @@ public class NumberUtil{
      * 日期 ：2016-09-27 12:06:26
      */
     public static Boolean isDouble(Object obj) {
-        String str = Conver.toStr(obj,null);
+        String str = Convert.toStr(obj,null);
         try {
             if (StrUtil.isBlank(str)) {
                 return false;
@@ -59,7 +59,7 @@ public class NumberUtil{
      * 日期 ：2016-09-27 12:06:26
      */
     public static Boolean isInteger(Object obj) {
-        String str = Conver.toStr(obj,null);
+        String str = Convert.toStr(obj,null);
         try {
             if (StrUtil.isBlank(str)) {
                 return false;
@@ -77,7 +77,7 @@ public class NumberUtil{
      */
     public static Boolean isLong(Object obj) {
         try {
-            String str = Conver.toStr(obj,null);
+            String str = Convert.toStr(obj,null);
             if (StrUtil.isBlank(str)) {
                 return false;
             }
@@ -94,7 +94,7 @@ public class NumberUtil{
      */
     public static Boolean isFloat(Object obj) {
         try {
-            String str = Conver.toStr(obj,null);
+            String str = Convert.toStr(obj,null);
             if (StrUtil.isBlank(str)) {
                 return false;
             }
@@ -111,7 +111,7 @@ public class NumberUtil{
      */
     public static Boolean isShort(Object obj) {
         try {
-            String str = Conver.toStr(obj,null);
+            String str = Convert.toStr(obj,null);
             if (StrUtil.isBlank(str)) {
                 return false;
             }
@@ -128,7 +128,7 @@ public class NumberUtil{
      */
     public static Boolean isByte(Object obj) {
         try {
-            String str = Conver.toStr(obj,null);
+            String str = Convert.toStr(obj,null);
             if (StrUtil.isBlank(str)) {
                 return false;
             }
@@ -145,7 +145,7 @@ public class NumberUtil{
      */
     public static Boolean isBigDecimal(Object obj) {
         try {
-            String str = Conver.toStr(obj,null);
+            String str = Convert.toStr(obj,null);
             if (StrUtil.isBlank(str)) {
                 return false;
             }
@@ -161,7 +161,7 @@ public class NumberUtil{
      * 日期 ：2016-09-27 12:06:26
      */
     public static Boolean isNumber(Object obj) {
-        String str = Conver.toStr(obj,null);
+        String str = Convert.toStr(obj,null);
         return NumberUtils.isNumber(str);
     }
     /**
@@ -173,7 +173,7 @@ public class NumberUtil{
      * 日期 ：2016-09-27 15:38:17
      */
     public static BigDecimal add(Object v1, Object v2) {
-        return Conver.toBigDecimal(v1,BigDecimal.ZERO).add(Conver.toBigDecimal(v2,BigDecimal.ZERO));
+        return Convert.toBigDecimal(v1,BigDecimal.ZERO).add(Convert.toBigDecimal(v2,BigDecimal.ZERO));
     }
     /**
      * 描述：提供精确的减法运算。
@@ -184,11 +184,11 @@ public class NumberUtil{
      * 日期 ：2016-09-27 15:38:40
      */
     public static BigDecimal subtract(Object v1, Object v2) {
-        BigDecimal bigDecimal_v1 = Conver.toBigDecimal(v1,null);
+        BigDecimal bigDecimal_v1 = Convert.toBigDecimal(v1,null);
         if(bigDecimal_v1 == null){
-            throw new UtilException(StrUtil.format("NumberUtil [{}] subtract [{}] error!", Conver.toStr(v1,null)),Conver.toStr(v2,null));
+            throw new UtilException(StrUtil.format("NumberUtil [{}] subtract [{}] error!", Convert.toStr(v1,null)),Convert.toStr(v2,null));
         }
-        return bigDecimal_v1.subtract(Conver.toBigDecimal(v2,BigDecimal.ZERO));
+        return bigDecimal_v1.subtract(Convert.toBigDecimal(v2,BigDecimal.ZERO));
     }
     /**
      * 描述：提供精确的乘法运算。
@@ -199,10 +199,10 @@ public class NumberUtil{
      * 日期 ：2016-09-27 15:39:32
      */
     public static BigDecimal multiply(Object v1, Object v2) {
-        BigDecimal bigDecimal_v1 = Conver.toBigDecimal(v1,null);
-        BigDecimal bigDecimal_v2 = Conver.toBigDecimal(v2,null);
+        BigDecimal bigDecimal_v1 = Convert.toBigDecimal(v1,null);
+        BigDecimal bigDecimal_v2 = Convert.toBigDecimal(v2,null);
         if(bigDecimal_v1 == null || bigDecimal_v2 == null){
-            throw new UtilException(StrUtil.format("NumberUtil [{}] multiply [{}] error!", Conver.toStr(v1,null)),Conver.toStr(v2,null));
+            throw new UtilException(StrUtil.format("NumberUtil [{}] multiply [{}] error!", Convert.toStr(v1,null)),Convert.toStr(v2,null));
         }
         return bigDecimal_v1.multiply(bigDecimal_v2);
     }
@@ -228,13 +228,13 @@ public class NumberUtil{
      * 日期 ：2016-09-27 16:10:57
      */
     public static BigDecimal divide(Object v1, Object v2, int scale, int roundType) {
-        BigDecimal bigDecimal_v1 = Conver.toBigDecimal(v1,null);
-        BigDecimal bigDecimal_v2 = Conver.toBigDecimal(v2,null);
+        BigDecimal bigDecimal_v1 = Convert.toBigDecimal(v1,null);
+        BigDecimal bigDecimal_v2 = Convert.toBigDecimal(v2,null);
         if(bigDecimal_v1 == null || bigDecimal_v2 == null){
-            throw new UtilException(StrUtil.format("NumberUtil [{}] divide [{}] error!", Conver.toStr(v1,null)),Conver.toStr(v2,null));
+            throw new UtilException(StrUtil.format("NumberUtil [{}] divide [{}] error!", Convert.toStr(v1,null)),Convert.toStr(v2,null));
         }
         if(!isCompareToGT(v2,ZERO)){
-            throw new UtilException(StrUtil.format("NumberUtil [{}] divide [{}] Dividend must greater than zero error!", Conver.toStr(v1,null)),Conver.toStr(v2,null));
+            throw new UtilException(StrUtil.format("NumberUtil [{}] divide [{}] Dividend must greater than zero error!", Convert.toStr(v1,null)),Convert.toStr(v2,null));
         }
         return setScale(bigDecimal_v1.divide(bigDecimal_v2),scale,roundType);
     }
@@ -247,10 +247,10 @@ public class NumberUtil{
      * 日期 ：2016-09-27 16:12:43
      */
     public static Boolean isCompareToGT(Object v1, Object v2) {
-        BigDecimal bigDecimal_v1 = Conver.toBigDecimal(v1,null);
-        BigDecimal bigDecimal_v2 = Conver.toBigDecimal(v2,null);
+        BigDecimal bigDecimal_v1 = Convert.toBigDecimal(v1,null);
+        BigDecimal bigDecimal_v2 = Convert.toBigDecimal(v2,null);
         if(bigDecimal_v1 == null || bigDecimal_v2 == null){
-            throw new UtilException(StrUtil.format("NumberUtil [{}] isCompareToGT [{}] error!", Conver.toStr(v1,null)),Conver.toStr(v2,null));
+            throw new UtilException(StrUtil.format("NumberUtil [{}] isCompareToGT [{}] error!", Convert.toStr(v1,null)),Convert.toStr(v2,null));
         }
         return bigDecimal_v1.compareTo(bigDecimal_v2) > ZERO;
     }
@@ -263,10 +263,10 @@ public class NumberUtil{
      * 日期 ：2016-09-27 16:12:43
      */
     public static Boolean isCompareToGtOrEqual(Object v1, Object v2) {
-        BigDecimal bigDecimal_v1 = Conver.toBigDecimal(v1,null);
-        BigDecimal bigDecimal_v2 = Conver.toBigDecimal(v2,null);
+        BigDecimal bigDecimal_v1 = Convert.toBigDecimal(v1,null);
+        BigDecimal bigDecimal_v2 = Convert.toBigDecimal(v2,null);
         if(bigDecimal_v1 == null || bigDecimal_v2 == null){
-            throw new UtilException(StrUtil.format("NumberUtil [{}] isCompareToGT [{}] error!", Conver.toStr(v1,null)),Conver.toStr(v2,null));
+            throw new UtilException(StrUtil.format("NumberUtil [{}] isCompareToGT [{}] error!", Convert.toStr(v1,null)),Convert.toStr(v2,null));
         }
         return bigDecimal_v1.compareTo(bigDecimal_v2) >= ZERO;
     }
@@ -291,12 +291,12 @@ public class NumberUtil{
         if(object == null){
             return null;
         }
-        BigDecimal value = Conver.toBigDecimal(object,null);
+        BigDecimal value = Convert.toBigDecimal(object,null);
         if(value == null){
-            throw new UtilException(StrUtil.format("NumberUtil [{}] to SetScale [{}] roundType [{}] error!", Conver.toStr(object,null)),scale,roundType);
+            throw new UtilException(StrUtil.format("NumberUtil [{}] to SetScale [{}] roundType [{}] error!", Convert.toStr(object,null)),scale,roundType);
         }
         if(!isCompareToGT(scale,ZERO)){
-            throw new UtilException(StrUtil.format("NumberUtil [{}] to SetScale [{}] roundType [{}] scale must greater than zero error!", Conver.toStr(object,null)),scale,roundType);
+            throw new UtilException(StrUtil.format("NumberUtil [{}] to SetScale [{}] roundType [{}] scale must greater than zero error!", Convert.toStr(object,null)),scale,roundType);
         }
         return value.setScale(scale,roundType);
     }
@@ -311,11 +311,11 @@ public class NumberUtil{
         if(object == null){
             return null;
         }
-        Double value = Conver.toDouble(object,null);
+        Double value = Convert.toDouble(object,null);
         if(value == null){
-            throw new UtilException(StrUtil.format("NumberUtil [{}] to china money error!", Conver.toStr(object,null)));
+            throw new UtilException(StrUtil.format("NumberUtil [{}] to china money error!", Convert.toStr(object,null)));
         }
-        return Conver.digitUppercase(value);
+        return Convert.digitUppercase(value);
     }
 
 }

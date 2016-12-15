@@ -1,7 +1,7 @@
 package com.kangzz.mtool.util;
 
 
-import com.kangzz.mtool.lang.Conver;
+import com.kangzz.mtool.convert.Convert;
 import com.kangzz.mtool.lang.Validator;
 
 import java.util.Collection;
@@ -261,7 +261,7 @@ public class ReUtil {
 	 * @return 整数
 	 */
 	public static Integer getFirstNumber(String StringWithNumber) {
-		return Conver.toInt(get(Validator.NUMBERS, StringWithNumber, 0), null);
+		return Convert.toInt(get(Validator.NUMBERS, StringWithNumber, 0), null);
 	}
 	
 	/**

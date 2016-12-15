@@ -1,6 +1,7 @@
 package com.kangzz.mtool.lang;
 
 
+import com.kangzz.mtool.convert.Convert;
 import com.kangzz.mtool.util.BeanUtil;
 import com.kangzz.mtool.util.CollectionUtil;
 import com.kangzz.mtool.getter.BasicTypeGetter;
@@ -160,7 +161,7 @@ public class Dict extends HashMap<String, Object> implements BasicTypeGetter<Str
 	 */
 	@Override
 	public String getStr(String attr) {
-		return Conver.toStr(get(attr), null);
+		return Convert.toStr(get(attr), null);
 	}
 	
 	/**
@@ -169,7 +170,7 @@ public class Dict extends HashMap<String, Object> implements BasicTypeGetter<Str
 	 */
 	@Override
 	public Integer getInt(String attr) {
-		return Conver.toInt(get(attr), null);
+		return Convert.toInt(get(attr), null);
 	}
 	
 	/**
@@ -178,7 +179,7 @@ public class Dict extends HashMap<String, Object> implements BasicTypeGetter<Str
 	 */
 	@Override
 	public Long getLong(String attr) {
-		return Conver.toLong(get(attr), null);
+		return Convert.toLong(get(attr), null);
 	}
 	
 	/**
@@ -187,27 +188,27 @@ public class Dict extends HashMap<String, Object> implements BasicTypeGetter<Str
 	 */
 	@Override
 	public Float getFloat(String attr) {
-		return Conver.toFloat(get(attr), null);
+		return Convert.toFloat(get(attr), null);
 	}
 	
 	@Override
 	public Short getShort(String attr) {
-		return Conver.toShort(get(attr), null);
+		return Convert.toShort(get(attr), null);
 	}
 
 	@Override
 	public Character getChar(String attr) {
-		return Conver.toChar(get(attr), null);
+		return Convert.toChar(get(attr), null);
 	}
 
 	@Override
 	public Double getDouble(String attr) {
-		return Conver.toDouble(get(attr), null);
+		return Convert.toDouble(get(attr), null);
 	}
 
 	@Override
 	public Byte getByte(String attr) {
-		return Conver.toByte(get(attr), null);
+		return Convert.toByte(get(attr), null);
 	}
 	
 	/**
@@ -216,7 +217,7 @@ public class Dict extends HashMap<String, Object> implements BasicTypeGetter<Str
 	 */
 	@Override
 	public Boolean getBool(String attr) {
-		return Conver.toBool(get(attr), null);
+		return Convert.toBool(get(attr), null);
 	}
 	
 	/**

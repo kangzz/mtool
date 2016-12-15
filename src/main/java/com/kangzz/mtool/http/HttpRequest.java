@@ -1,9 +1,11 @@
 package com.kangzz.mtool.http;
 
 
+import com.kangzz.mtool.convert.Convert;
 import com.kangzz.mtool.exception.HttpException;
 import com.kangzz.mtool.http.ssl.SSLSocketFactoryBuilder;
-import com.kangzz.mtool.lang.Conver;
+import com.kangzz.mtool.lang.Base64;
+import com.kangzz.mtool.secure.SecureUtil;
 import com.kangzz.mtool.util.*;
 
 import javax.net.ssl.HostnameVerifier;
@@ -228,7 +230,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
 			strValue = CollectionUtil.join((Object[]) value, ",");
 		} else {
 			// 其他对象一律转换为字符串
-			strValue = Conver.toStr(value, null);
+			strValue = Convert.toStr(value, null);
 		}
 
 //		form.put(HttpUtil.encode(name, charset), HttpUtil.encode(strValue, charset));
@@ -439,7 +441,7 @@ public class HttpRequest extends HttpBase<HttpRequest> {
 	 */
 	public HttpRequest basicAuth(String username, String password) {
 		final String data = username.concat(":").concat(password);
-		final String base64 = SecureUtil.base64(data, charset);
+		final String base64 = Base64.encode(data, charset);
 
 		header("Authorization", "Basic " + base64, true);
 

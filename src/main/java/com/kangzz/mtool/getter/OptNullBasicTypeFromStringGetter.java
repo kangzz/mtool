@@ -1,6 +1,8 @@
 package com.kangzz.mtool.getter;
 
-import com.kangzz.mtool.lang.Conver;
+
+
+import com.kangzz.mtool.convert.Convert;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -23,51 +25,51 @@ public abstract class OptNullBasicTypeFromStringGetter<K> extends OptNullBasicTy
 	
 	@Override
 	public Integer getInt(K key, Integer defaultValue) {
-		return Conver.toInt(getStr(key), defaultValue);
+		return Convert.toInt(getStr(key), defaultValue);
 	}
 
 	@Override
 	public Short getShort(K key, Short defaultValue) {
-		return Conver.toShort(getStr(key), defaultValue);
+		return Convert.toShort(getStr(key), defaultValue);
 	}
 
 	@Override
 	public Boolean getBool(K key, Boolean defaultValue) {
-		return Conver.toBool(getStr(key), defaultValue);
+		return Convert.toBool(getStr(key), defaultValue);
 	}
 
 	@Override
 	public Long getLong(K key, Long defaultValue) {
-		return Conver.toLong(getStr(key), defaultValue);
+		return Convert.toLong(getStr(key), defaultValue);
 	}
 
 	@Override
 	public Character getChar(K key, Character defaultValue) {
-		return Conver.toChar(getStr(key), defaultValue);
+		return Convert.toChar(getStr(key), defaultValue);
 	}
 	
 	@Override
 	public Float getFloat(K key, Float defaultValue) {
-		return Conver.toFloat(getStr(key), defaultValue);
+		return Convert.toFloat(getStr(key), defaultValue);
 	}
 
 	@Override
 	public Double getDouble(K key, Double defaultValue) {
-		return Conver.toDouble(getStr(key), defaultValue);
+		return Convert.toDouble(getStr(key), defaultValue);
 	}
 
 	@Override
 	public Byte getByte(K key, Byte defaultValue) {
-		return Conver.toByte(getStr(key), defaultValue);
+		return Convert.toByte(getStr(key), defaultValue);
 	}
 
 	@Override
 	public BigDecimal getBigDecimal(K key, BigDecimal defaultValue) {
-		return Conver.toBigDecimal(getStr(key), defaultValue);
+		return Convert.toBigDecimal(getStr(key), defaultValue);
 	}
 
 	@Override
 	public BigInteger getBigInteger(K key, BigInteger defaultValue) {
-		return Conver.toBigInteger(getStr(key), defaultValue);
+		return Convert.toBigInteger(getStr(key), defaultValue);
 	}
 }

@@ -1,8 +1,8 @@
 package com.kangzz.mtool.util;
 
 
+import com.kangzz.mtool.convert.Convert;
 import com.kangzz.mtool.exception.UtilException;
-import com.kangzz.mtool.lang.Conver;
 
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
@@ -208,7 +208,7 @@ public class BeanUtil{
 				}
 
 				try {
-					property.getWriteMethod().invoke(bean, Conver.parse(property.getPropertyType(), value));
+					property.getWriteMethod().invoke(bean, Convert.convert(property.getPropertyType(), value));
 				} catch (Exception e) {
 					throw new UtilException(StrUtil.format("Inject [{}] error!", property.getName()), e);
 				}

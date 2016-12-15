@@ -1,9 +1,9 @@
 package com.kangzz.mtool.log.dialect;
 
+import com.kangzz.mtool.date.DateUtil;
 import com.kangzz.mtool.lang.Dict;
 import com.kangzz.mtool.log.AbstractLog;
 import com.kangzz.mtool.log.level.Level;
-import com.kangzz.mtool.util.DateUtil;
 import com.kangzz.mtool.util.StrUtil;
 
 /**

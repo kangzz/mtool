@@ -56,14 +56,12 @@ public class CharsetUtil {
 	 * @return 转换后的字符集
 	 */
 	public static String convert(String source, Charset srcCharset, Charset destCharset) {
-		if(null == srcCharset) {
+		if(ObjectUtil.isNullOrEmpty(srcCharset)) {
 			srcCharset = StandardCharsets.ISO_8859_1;
 		}
-		
-		if(null == destCharset) {
-			srcCharset = StandardCharsets.UTF_8;
+		if(ObjectUtil.isNullOrEmpty(destCharset)) {
+			destCharset = StandardCharsets.UTF_8;
 		}
-		
 		if (StrUtil.isBlank(source) || srcCharset.equals(destCharset)) {
 			return source;
 		}

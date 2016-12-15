@@ -1,6 +1,7 @@
 package com.kangzz.mtool.lang;
 
-import com.kangzz.mtool.util.DateUtil;
+
+import com.kangzz.mtool.date.DateUtil;
 
 import java.util.Date;
 

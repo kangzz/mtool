@@ -1,9 +1,9 @@
 package com.kangzz.mtool.http;
 
 
+import com.kangzz.mtool.convert.Convert;
 import com.kangzz.mtool.exception.HttpException;
 import com.kangzz.mtool.io.FastByteArrayOutputStream;
-import com.kangzz.mtool.lang.Conver;
 import com.kangzz.mtool.util.IoUtil;
 import com.kangzz.mtool.util.StrUtil;
 
@@ -148,7 +148,7 @@ public class HttpResponse extends HttpBase<HttpResponse> {
 			in = new GZIPInputStream(in);
 		}
 		
-		int contentLength  = Conver.toInt(header(Header.CONTENT_LENGTH), 0);
+		int contentLength  = Convert.toInt(header(Header.CONTENT_LENGTH), 0);
 		this.out = contentLength > 0 ? new FastByteArrayOutputStream(contentLength) : new FastByteArrayOutputStream();
 		try {
 			IoUtil.copy(in, this.out);

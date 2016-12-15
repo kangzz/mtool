@@ -1,10 +1,10 @@
 package com.kangzz.mtool.util;
 
 
+import com.kangzz.mtool.convert.Convert;
 import com.kangzz.mtool.exception.UtilException;
 import com.kangzz.mtool.io.FastByteArrayOutputStream;
 import com.kangzz.mtool.io.StreamProgress;
-import com.kangzz.mtool.lang.Conver;
 
 import java.io.*;
 import java.nio.CharBuffer;
@@ -314,7 +314,7 @@ public class IoUtil {
 			osw = new OutputStreamWriter(out, charset);
 			for (Object content : contents) {
 				if(content != null) {
-					osw.write(Conver.toStr(content, StrUtil.EMPTY));
+					osw.write(Convert.toStr(content, StrUtil.EMPTY));
 					osw.flush();
 				}
 			}
