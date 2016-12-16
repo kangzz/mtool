@@ -91,28 +91,28 @@ public class SecureRegistry {
 		}
 		return secure.encrypt(file);
 	}
-	public byte[] encrypt(SecureUtil.OrderSecure secureType, byte[] data, String key) {
+	public byte[] encrypt(SecureUtil.Symmetric secureType, byte[] data, String key) {
 		Secure secure = getSecure(secureType.getValue());
 		if (null == secure) {
 			throw new ConvertException("No Secure for type [{}]", secureType.getValue());
 		}
 		return secure.encrypt(data, key);
 	}
-	public File encrypt(SecureUtil.OrderSecure secureType,File file, String key){
+	public File encrypt(SecureUtil.Symmetric secureType,File file, String key){
 		Secure secure = getSecure(secureType.getValue());
 		if (null == secure) {
 			throw new ConvertException("No Secure for type [{}]", secureType.getValue());
 		}
 		return secure.encrypt(file,key);
 	}
-	public byte[] decrypt(SecureUtil.OrderSecure secureType, byte[] data, String key) {
+	public byte[] decrypt(SecureUtil.Symmetric secureType, byte[] data, String key) {
 		Secure secure = getSecure(secureType.getValue());
 		if (null == secure) {
 			throw new ConvertException("No Secure for type [{}]", secureType.getValue());
 		}
 		return secure.decrypt(data, key);
 	}
-	public File decrypt(SecureUtil.OrderSecure secureType, File file, String key) {
+	public File decrypt(SecureUtil.Symmetric secureType, File file, String key) {
 		Secure secure = getSecure(secureType.getValue());
 		if (null == secure) {
 			throw new ConvertException("No Secure for type [{}]", secureType.getValue());
@@ -128,14 +128,21 @@ public class SecureRegistry {
 	private SecureRegistry registerDefaultConverter() {
 		defaultSecure = new ConcurrentHashMap();
 		//原始类型转换器
-		defaultSecure.put(DigestUtil.Algorithm.MD5.getValue(), new DigestSecure(DigestUtil.Algorithm.MD5.getValue()));
-		defaultSecure.put(DigestUtil.Algorithm.SHA1.getValue(), new DigestSecure(DigestUtil.Algorithm.SHA1.getValue()));
-		defaultSecure.put(DigestUtil.Algorithm.SHA256.getValue(), new DigestSecure(DigestUtil.Algorithm.SHA256.getValue()));
-		defaultSecure.put(DigestUtil.Algorithm.SHA348.getValue(), new DigestSecure(DigestUtil.Algorithm.SHA348.getValue()));
-		defaultSecure.put(DigestUtil.Algorithm.SHA512.getValue(), new DigestSecure(DigestUtil.Algorithm.SHA512.getValue()));
+		defaultSecure.put(DigestUtil.Algorithm.MD5.getValue(),
+				new DigestSecure(DigestUtil.Algorithm.MD5.getValue()));
+		defaultSecure.put(DigestUtil.Algorithm.SHA1.getValue(),
+				new DigestSecure(DigestUtil.Algorithm.SHA1.getValue()));
+		defaultSecure.put(DigestUtil.Algorithm.SHA256.getValue(),
+				new DigestSecure(DigestUtil.Algorithm.SHA256.getValue()));
+		defaultSecure.put(DigestUtil.Algorithm.SHA348.getValue(),
+				new DigestSecure(DigestUtil.Algorithm.SHA348.getValue()));
+		defaultSecure.put(DigestUtil.Algorithm.SHA512.getValue(),
+				new DigestSecure(DigestUtil.Algorithm.SHA512.getValue()));
 
-		defaultSecure.put("AES", new AesSecure("AES","SHA1PRNG","AES/ECB/PKCS5Padding"));
-		defaultSecure.put("DES", new DesSecure("DES","DES/CBC/PKCS5Padding","12345678"));
+		defaultSecure.put(SecureUtil.Symmetric.AES.getValue(),
+				new AesSecure(SecureUtil.Symmetric.AES.getValue(),"SHA1PRNG","AES/ECB/PKCS5Padding"));
+		defaultSecure.put(SecureUtil.Symmetric.DES.getValue(),
+				new DesSecure(SecureUtil.Symmetric.AES.getValue(),"DES/CBC/PKCS5Padding","12345678"));
 		return this;
 	}
 	//----------------------------------------------------------- Private method end

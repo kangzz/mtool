@@ -1,6 +1,5 @@
 package com.kangzz.mtool.secure.impl;
 
-import com.kangzz.mtool.exception.UtilException;
 import com.kangzz.mtool.secure.AbstractSecure;
 import com.kangzz.mtool.secure.DigestUtil;
 import com.kangzz.mtool.secure.SecureException;

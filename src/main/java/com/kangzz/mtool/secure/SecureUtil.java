@@ -15,13 +15,17 @@ import java.util.UUID;
  */
 public class SecureUtil {
 
-
-	public static enum OrderSecure {
+	/**
+	 * 描述：对称加密
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-16 10:37:52
+	 */
+	public static enum Symmetric {
 		AES("AES"), DES("DES");
 
 		private String value;
 
-		private OrderSecure(String value) {
+		private Symmetric(String value) {
 			this.value = value;
 		}
 
@@ -105,55 +109,89 @@ public class SecureUtil {
 
 
 	/**
-	 * MD5算法加密
-	 *
-	 * @param data 被加密的字符串
-	 * @return 被加密后的字符串
-	 * @see DigestUtil#md5Hex(String, String)
+	 * 描述：AES加密字符串
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-16 10:22:09
 	 */
 	public static String encryptAES(String data, String key) {
-		return HexUtil.parseByte2HexStr(encrypt(OrderSecure.AES,StrUtil.bytes(data, CharsetUtil.UTF_8),key));
+		return HexUtil.parseByte2HexStr(encrypt(Symmetric.AES,StrUtil.bytes(data, CharsetUtil.UTF_8),key));
 	}
+	/**
+	 * 描述：AES解密字符串
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-16 10:22:09
+	 */
 	public static String decryptAES(String data, String key) {
-		return new String(decrypt(OrderSecure.AES,HexUtil.parseHexStr2Byte(data),key));
+		return new String(decrypt(Symmetric.AES,HexUtil.parseHexStr2Byte(data),key));
 	}
+	/**
+	 * 描述：AES加密文件
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-16 10:22:39
+	 */
 	public static File encryptAES(File file, String key){
-		return encrypt(OrderSecure.AES, file, key);
+		return encrypt(Symmetric.AES, file, key);
 	}
+	/**
+	 * 描述：AES解密文件
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-16 10:22:56
+	 */
 	public static File decryptAES(File file, String key){
-		return decrypt(OrderSecure.AES, file, key);
+		return decrypt(Symmetric.AES, file, key);
 	}
-
+	/**
+	 * 描述：DES加密字符串
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-16 10:22:09
+	 */
 	public static String encryptDES(String data, String key) {
-		return HexUtil.parseByte2HexStr(encrypt(OrderSecure.DES,StrUtil.bytes(data, CharsetUtil.UTF_8),key));
+		return HexUtil.parseByte2HexStr(encrypt(Symmetric.DES,StrUtil.bytes(data, CharsetUtil.UTF_8),key));
 	}
+	/**
+	 * 描述：DES解密字符串
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-16 10:22:09
+	 */
 	public static String decryptDES(String data, String key) {
-		return new String(decrypt(OrderSecure.DES,HexUtil.parseHexStr2Byte(data),key));
+		return new String(decrypt(Symmetric.DES,HexUtil.parseHexStr2Byte(data),key));
 	}
+	/**
+	 * 描述：DES加密文件
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-16 10:22:39
+	 */
 	public static File encryptDES(File file, String key){
-		return encrypt(OrderSecure.DES, file, key);
+		return encrypt(Symmetric.DES, file, key);
 	}
+	/**
+	 * 描述：DES解密文件
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-16 10:22:56
+	 */
 	public static File decryptDES(File file, String key){
-		return decrypt(OrderSecure.DES, file, key);
+		return decrypt(Symmetric.DES, file, key);
 	}
 
 
+	/**摘要算法*/
 	public static byte[] encrypt(DigestUtil.Algorithm algorithm, byte[] data){
 		return SecureRegistry.getInstance().encrypt(algorithm,data);
 	}
 	public static File encrypt(DigestUtil.Algorithm algorithm, File file){
 		return SecureRegistry.getInstance().encrypt(algorithm,file);
 	}
-	public static byte[] encrypt(OrderSecure sourceType, byte[] data, String key){
+	/**对称加密*/
+	public static byte[] encrypt(Symmetric sourceType, byte[] data, String key){
 		return SecureRegistry.getInstance().encrypt(sourceType,data,key);
 	}
-	public static File encrypt(OrderSecure sourceType, File file, String key){
+	public static File encrypt(Symmetric sourceType, File file, String key){
 		return SecureRegistry.getInstance().encrypt(sourceType,file,key);
 	}
-	public static byte[] decrypt(OrderSecure sourceType, byte[] data, String key){
+	public static byte[] decrypt(Symmetric sourceType, byte[] data, String key){
 		return SecureRegistry.getInstance().decrypt(sourceType,data, key);
 	}
-	public static File decrypt(OrderSecure sourceType, File file, String key){
+	public static File decrypt(Symmetric sourceType, File file, String key){
 		return SecureRegistry.getInstance().decrypt(sourceType, file, key);
 	}
 	/**
