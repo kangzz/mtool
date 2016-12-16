@@ -49,6 +49,61 @@ public class DesSecure extends AbstractSecure{
             throw new SecurityException(e);
         }
     }
+    @Override
+    public File encrypt(File sourceFile, String sKey) throws IllegalArgumentException {
+        //新建临时加密文件
+        File encryptFile = null;
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        try {
+            inputStream = new FileInputStream(sourceFile);
+            encryptFile = File.createTempFile(FileUtil.mainName(sourceFile),"."+FileUtil.extName(sourceFile));
+            outputStream = new FileOutputStream(encryptFile);
+            Cipher cipher = initDESCipher(sKey,Cipher.ENCRYPT_MODE);
+            //以加密流写入文件
+            CipherInputStream cipherInputStream = new CipherInputStream(inputStream, cipher);
+            byte[] cache = new byte[1024];
+            int nRead = 0;
+            while ((nRead = cipherInputStream.read(cache)) != -1) {
+                outputStream.write(cache, 0, nRead);
+                outputStream.flush();
+            }
+            cipherInputStream.close();
+        } catch (Exception e) {
+            throw new SecurityException(e);
+        } finally {
+            IoUtil.close(inputStream);
+            IoUtil.close(outputStream);
+        }
+        return encryptFile;
+    }
+
+    @Override
+    public File decrypt(File sourceFile, String key) throws IllegalArgumentException {
+        File decryptFile = null;
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        try {
+            Cipher cipher = initDESCipher(key,Cipher.DECRYPT_MODE);
+            inputStream = new FileInputStream(sourceFile);
+            decryptFile = File.createTempFile(FileUtil.mainName(sourceFile),"."+FileUtil.extName(sourceFile));
+            outputStream = new FileOutputStream(decryptFile);
+            CipherOutputStream cipherOutputStream = new CipherOutputStream(outputStream, cipher);
+            byte [] buffer = new byte [1024];
+            int r;
+            while ((r = inputStream.read(buffer)) >= 0) {
+                cipherOutputStream.write(buffer, 0, r);
+            }
+            cipherOutputStream.close();
+        } catch (Exception e) {
+            throw new SecurityException(e);
+        } finally {
+            IoUtil.close(inputStream);
+            IoUtil.close(outputStream);
+        }
+        return decryptFile;
+    }
+
     private Cipher initDESCipher(String sKey, int cipherMode) {
         Cipher cipher;
         try {

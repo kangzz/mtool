@@ -118,6 +118,12 @@ public class SecureUtil {
 	public static String decryptAES(String data, String key) {
 		return new String(decrypt(OrderSecure.AES,HexUtil.parseHexStr2Byte(data),key));
 	}
+	public static File encryptAES(File file, String key){
+		return encrypt(OrderSecure.AES, file, key);
+	}
+	public static File decryptAES(File file, String key){
+		return decrypt(OrderSecure.AES, file, key);
+	}
 
 	public static String encryptDES(String data, String key) {
 		return HexUtil.parseByte2HexStr(encrypt(OrderSecure.DES,StrUtil.bytes(data, CharsetUtil.UTF_8),key));
@@ -125,7 +131,12 @@ public class SecureUtil {
 	public static String decryptDES(String data, String key) {
 		return new String(decrypt(OrderSecure.DES,HexUtil.parseHexStr2Byte(data),key));
 	}
-
+	public static File encryptDES(File file, String key){
+		return encrypt(OrderSecure.DES, file, key);
+	}
+	public static File decryptDES(File file, String key){
+		return decrypt(OrderSecure.DES, file, key);
+	}
 
 
 	public static byte[] encrypt(DigestUtil.Algorithm algorithm, byte[] data){
