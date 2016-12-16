@@ -3,6 +3,7 @@ package com.kangzz.mtool.secure.impl;
 import com.kangzz.mtool.exception.UtilException;
 import com.kangzz.mtool.secure.AbstractSecure;
 import com.kangzz.mtool.secure.DigestUtil;
+import com.kangzz.mtool.secure.SecureException;
 import com.kangzz.mtool.util.FileUtil;
 import com.kangzz.mtool.util.IoUtil;
 
@@ -34,7 +35,7 @@ public class DigestSecure extends AbstractSecure {
             outputStream.write(DigestUtil.digest(DigestUtil.getDigest(secureType), in));
             outputStream.flush();
         } catch (Exception e) {
-            throw new UtilException(e);
+            throw new SecureException(e);
         }finally{
             IoUtil.close(in);
             IoUtil.close(outputStream);

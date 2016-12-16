@@ -2,7 +2,6 @@ package com.kangzz.mtool.secure;
 
 
 import com.kangzz.mtool.convert.ConvertException;
-import com.kangzz.mtool.lang.Console;
 import com.kangzz.mtool.secure.impl.AesSecure;
 import com.kangzz.mtool.secure.impl.DesSecure;
 import com.kangzz.mtool.secure.impl.DigestSecure;
@@ -12,10 +11,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 加密算法登记
- * 
- * @author Looly
- *
+ * 描述：加密算法登记
+ * 作者 ：kangzz
+ * 日期 ：2016-12-16 10:09:04
  */
 public class SecureRegistry {
 

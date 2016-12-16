@@ -12,19 +12,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * 摘要算法工具类
- * 
- * @author Looly
- *
+ * 描述：摘要算法
+ * 作者 ：kangzz
+ * 日期 ：2016-12-16 10:08:42
  */
 public class DigestUtil {
 
-	/**
-	 * 摘要算法类型
-	 *
-	 * @author Looly
-	 *
-	 */
 	public static enum Algorithm {
 		MD5("MD5"), SHA256("SHA-256"), SHA348("SHA-348"), SHA512("SHA-512"), SHA1("SHA-1");
 

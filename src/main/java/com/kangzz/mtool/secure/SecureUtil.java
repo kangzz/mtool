@@ -9,16 +9,15 @@ import java.util.UUID;
 
 
 /**
- * 安全相关工具类
- * 
- * @author xiaoleilu
- *
+ * 描述：加密解密
+ * 作者 ：kangzz
+ * 日期 ：2016-12-16 10:08:23
  */
 public class SecureUtil {
 
 
 	public static enum OrderSecure {
-		AES("AES"), DES("DES"), SHA348("SHA-348"), SHA512("SHA-512"), SHA1("SHA-1");
+		AES("AES"), DES("DES");
 
 		private String value;
 
