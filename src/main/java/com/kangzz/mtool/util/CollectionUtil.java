@@ -6,6 +6,8 @@ import java.lang.reflect.Array;
 import java.util.*;
 import java.util.Map.Entry;
 
+import static java.util.Collections.emptyMap;
+
 /**
  * 集合相关工具类，包括数组
  * 
@@ -225,6 +227,8 @@ public class CollectionUtil {
 		return (T[]) Array.newInstance(componentType, newSize);
 	}
 
+
+
 	/**
 	 * 生成一个新的重新设置大小的数组<br/>
 	 * 新数组的类型为原数组的类型
@@ -236,6 +240,7 @@ public class CollectionUtil {
 	public static <T> T[] resize(T[] buffer, int newSize) {
 		return resize(buffer, newSize, buffer.getClass().getComponentType());
 	}
+
 
 	/**
 	 * 将多个数组合并在一起<br>
@@ -249,7 +254,6 @@ public class CollectionUtil {
 		if (arrays.length == 1) {
 			return arrays[0];
 		}
-
 		int length = 0;
 		for (T[] array : arrays) {
 			if (array == null) {
@@ -552,14 +556,13 @@ public class CollectionUtil {
 	 * @param entryCollection entry集合
 	 * @return Map
 	 */
-	public static <T, K> HashMap<T, K> toMap(Collection<Entry<T, K>> entryCollection) {
-		HashMap<T, K> map = new HashMap<T, K>();
+	public static <T, K> LinkedHashMap<T, K> toMap(Collection<Entry<T, K>> entryCollection) {
+		LinkedHashMap<T, K> map = new LinkedHashMap<T, K>();
 		for (Entry<T, K> entry : entryCollection) {
 			map.put(entry.getKey(), entry.getValue());
 		}
 		return map;
 	}
-
 	/**
 	 * 将集合转换为排序后的TreeSet
 	 * 
