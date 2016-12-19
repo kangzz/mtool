@@ -263,26 +263,23 @@ public class IdCardUtils {
             return null;  
         }  
         if (idCard.matches("^[a-zA-Z][0-9]{9}$")) { // 台湾  
-            info[0] = "台湾";  
-            System.out.println("11111");  
+            info[0] = "台湾";
             String char2 = idCard.substring(1, 2);  
             if (char2.equals("1")) {  
-                info[1] = "M";  
-                System.out.println("MMMMMMM");  
+                info[1] = "M";
             } else if (char2.equals("2")) {  
-                info[1] = "F";  
-                System.out.println("FFFFFFF");  
+                info[1] = "F";
             } else {  
                 info[1] = "N";  
-                info[2] = "false";  
-                System.out.println("NNNN");  
+                info[2] = "false";
                 return info;  
             }  
             info[2] = validateTWCard(idCard) ? "true" : "false";  
-        } else if (idCard.matches("^[1|5|7][0-9]{6}//(?[0-9A-Z]//)?$")) { // 澳门
+        } else if (idCard.matches("^[1|5|7][0-9]{6}\\(?[0-9A-Z]\\)?$")) { // 澳门
             info[0] = "澳门";  
             info[1] = "N";
-        } else if (idCard.matches("^[A-Z]{1,2}[0-9]{6}//(?[0-9A]//)?$")) { // 香港
+            info[2] = "true";
+        } else if (idCard.matches("^[A-Z]{1,2}[0-9]{6}\\(?[0-9A]\\)?$")) { // 香港
             info[0] = "香港";  
             info[1] = "N";  
             info[2] = validateHKCard(idCard) ? "true" : "false";  
