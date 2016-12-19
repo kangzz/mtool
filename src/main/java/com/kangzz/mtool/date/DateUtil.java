@@ -701,7 +701,7 @@ public class DateUtil {
 	 * @param month	月
 	 * @return 最后一天
 	 */
-	private int getLastDayOfMonth(int year, int month) {
+	public static int getLastDayOfMonth(int year, int month) {
 		if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8
 				|| month == 10 || month == 12) {
 			return 31;
@@ -717,6 +717,31 @@ public class DateUtil {
 			}
 		}
 		return 0;
+	}
+	/**
+	 * 描述：是否是有效的日期
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-17 14:37:10
+	 */
+	public static boolean isValidDate(int iYear, int iMonth, int iDate) {
+		if (iMonth < 1 || iMonth > 12) {
+			return false;
+		}
+		int datePerMonth = getLastDayOfMonth(iYear,iMonth);
+		return (iDate >= 1) && (iDate <= datePerMonth);
+	}
+	/**
+	 * 描述：是否是有效的生日
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-17 14:37:27
+	 */
+	public static boolean isValidBirthdayDate(int iYear, int iMonth, int iDate) {
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		if (iYear < 1900 || iYear > year) {
+			return false;
+		}
+		return isValidDate(iYear, iMonth, iDate);
 	}
 
 	// ------------------------------------------------------------------------ Private method start
