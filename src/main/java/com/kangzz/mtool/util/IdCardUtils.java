@@ -557,8 +557,4 @@ public class IdCardUtils {
         sProvince = cityCodes.get(sProvinNum);  
         return sProvince;  
     }
-    public static void main(String[] args) {
-    	String idNum = "13042519860304063X";
-    	System.out.println(getProvinceByIdCard(idNum));
-    }
 }
