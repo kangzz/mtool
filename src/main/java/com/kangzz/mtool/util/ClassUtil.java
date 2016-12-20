@@ -429,7 +429,6 @@ public class ClassUtil {
 		if (CollectionUtil.isEmpty(params)) {
 			return newInstance(clazz);
 		}
-
 		try {
 			return clazz.getDeclaredConstructor(getClasses(params)).newInstance(params);
 		} catch (Exception e) {
