@@ -135,6 +135,18 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.esotericsoftware.kryo/kryo -->
+        <dependency>
+            <groupId>com.esotericsoftware.kryo</groupId>
+            <artifactId>kryo</artifactId>
+            <version>2.16</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javolution/javolution -->
+        <dependency>
+            <groupId>javolution</groupId>
+            <artifactId>javolution</artifactId>
+            <version>5.5.1</version>
+        </dependency>
     </dependencies>
 
 
