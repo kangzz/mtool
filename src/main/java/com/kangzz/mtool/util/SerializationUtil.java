@@ -6,7 +6,9 @@ import com.kangzz.mtool.exception.UtilException;
 import javolution.util.FastTable;
 
 /**
- * Created by kangzz on 16/12/22.
+ * 描述：kryo序列化
+ * 作者 ：kangzz
+ * 日期 ：2016-12-23 18:25:59
  */
 public class SerializationUtil {
     private SerializationUtil() {  }
