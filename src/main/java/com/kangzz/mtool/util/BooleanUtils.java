@@ -32,6 +32,9 @@ public class BooleanUtils {
     public static boolean toBoolean(Boolean bool) {
         return bool != null && bool.booleanValue();
     }
+    public static Boolean toBoolean(boolean bool) {
+        return bool;
+    }
     /**
      * 描述：&& 封装
      * 作者 ：kangzz
@@ -50,27 +53,6 @@ public class BooleanUtils {
         return true;
     }
     /**
-     * 描述：&& 封装
-     * 作者 ：kangzz
-     * 日期 ：2016-12-26 18:40:03
-     */
-    public static Boolean and(boolean... checkBooleans){
-        if(checkBooleans == null) {
-            return false;
-        } else if(checkBooleans.length == 0) {
-            return false;
-        } else {
-            boolean[] arr = checkBooleans;
-            int len = checkBooleans.length;
-            for (int i = 0; i < len; i++) {
-                if(!arr[i]) {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
-    /**
      * 描述：|| 封装
      * 作者 ：kangzz
      * 日期 ：2016-12-26 18:40:30
@@ -87,26 +69,4 @@ public class BooleanUtils {
         }
         return false;
     }
-    /**
-     * 描述：|| 封装
-     * 作者 ：kangzz
-     * 日期 ：2016-12-26 18:40:30
-     */
-    public static Boolean or(boolean... checkBooleans){
-        if(checkBooleans == null) {
-            return false;
-        } else if(checkBooleans.length == 0) {
-            return false;
-        } else {
-            boolean[] arr = checkBooleans;
-            int len = checkBooleans.length;
-            for (int i = 0; i < len; i++) {
-                if(arr[i]) {
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-
 }

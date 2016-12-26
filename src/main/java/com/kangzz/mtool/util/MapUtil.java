@@ -198,6 +198,18 @@ public class MapUtil {
 		}
 		return map;
 	}
+	/**
+	 * 描述：判断map中是否存在某个key 支持map为null
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-26 19:12:13
+	 */
+	public static <T> Boolean containsKey(Map<Object,T> map, Object object){
+		if(ObjectUtil.isNullOrEmpty(map)){
+			return false;
+		}
+		return map.containsKey(object);
+	}
+
 
 
 }

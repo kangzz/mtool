@@ -10,7 +10,7 @@ import org.junit.Test;
 public class TestBooleanUtils {
     @Test
     public void test(){
-        Console.log("hasTrue:"+ BooleanUtils.hasTrue(false,1==2,"2".equals("2"))+"");
-        Console.log("isAllTrue:"+BooleanUtils.isAllTrue(false,1==2,"2".equals("2"))+"");
+        Console.log("hasTrue:"+ BooleanUtils.or(false,1==2,"2".equals("2"))+"");
+        Console.log("isAllTrue:"+BooleanUtils.and(false,1==2,"2".equals("2"))+"");
     }
 }
