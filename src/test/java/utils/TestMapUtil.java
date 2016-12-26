@@ -5,6 +5,7 @@ import com.kangzz.mtool.getter.BasicTypeGetter;
 import com.kangzz.mtool.getter.OptNullBasicTypeFromObjectGetter;
 import com.kangzz.mtool.lang.Console;
 import com.kangzz.mtool.util.MapUtil;
+import com.kangzz.mtool.util.StrUtil;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -33,6 +34,8 @@ public class TestMapUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        Console.log("contains:"+StrUtil.contains("12345552325","234"));
     }
 
 

@@ -1311,4 +1311,18 @@ public class StrUtil {
 		}
 		return returnList;
 	}
+	/**
+	 * 描述：字符串中是否包含 如果均为null 返回true
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-26 19:23:19
+	 */
+	public static Boolean contains(String str,String containsStr){
+		if(isBlank(str)){
+			if(isBlank(containsStr)){
+				return true;
+			}
+			return false;
+		}
+		return str.indexOf(containsStr) > -1;
+	}
 }
