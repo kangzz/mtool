@@ -46,7 +46,7 @@ public class BooleanUtils {
            return false;
         }
         for (int i = 0;i < checkBooleanList.size(); i++) {
-            if(!checkBooleanList.get(i)){
+            if(!isTrue(checkBooleanList.get(i))){
                 return false;
             }
         }
@@ -63,10 +63,33 @@ public class BooleanUtils {
             return false;
         }
         for (int i = 0;i < checkBooleanList.size(); i++) {
-            if(checkBooleanList.get(i)){
+            if(isTrue(checkBooleanList.get(i))){
                 return true;
             }
         }
         return false;
     }
+    /**
+     * 描述：相当于三元判断 封装null为false的判断
+     * 作者 ：kangzz
+     * 日期 ：2016-12-26 20:20:06
+     */
+    public static <T> T toObjByBoolean(Boolean checkBoolean, T trueValue, T falseValue){
+        return toObjByBoolean(checkBoolean,trueValue,falseValue,falseValue);
+    }
+    /**
+     * 描述：如果判断为null 增加为null时定义参数
+     * 作者 ：kangzz
+     * 日期 ：2016-12-26 20:22:55
+     */
+    public static <T> T toObjByBoolean(Boolean checkBoolean, T trueValue, T falseValue, T nullValue){
+        if(isTrue(checkBoolean)){
+            return trueValue;
+        }else if(isFalse(checkBoolean)){
+            return falseValue;
+        }else {
+            return nullValue;
+        }
+    }
+
 }
