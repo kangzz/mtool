@@ -327,6 +327,14 @@ public class ObjectUtil {
 		return false;
 	}
 	/**
+	 * 描述：非空
+	 * 作者 ：kangzz
+	 * 日期 ：2016-12-26 22:57:05
+	 */
+	public static boolean isNotNullOrEmpty(Object value){
+		return !isNullOrEmpty(value);
+	}
+	/**
 	 * 描述：判断是 Collections Type
 	 * 作者 ：kangzz
 	 * 日期 ：2016-11-01 09:44:29

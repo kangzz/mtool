@@ -70,6 +70,108 @@ public class BooleanUtils {
         return false;
     }
     /**
+     * 描述：全部为null 返回为true
+     * 作者 ：kangzz
+     * 日期 ：2016-12-26 22:45:36
+     */
+    public static Boolean andNull(Object... obj){
+        if(ObjectUtil.isNull(obj)){
+            return true;
+        }
+        List<Object> objList = Arrays.asList(obj);
+        for (int i = 0; i < objList.size(); i++) {
+            if(ObjectUtil.isNotNull(objList.get(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+    /**
+     * 描述：全部为null或空返回为true
+     * 作者 ：kangzz
+     * 日期 ：2016-12-26 22:46:27
+     */
+    public static Boolean andNullOrEmpty(Object... obj){
+        if(ObjectUtil.isNull(obj)){
+            return true;
+        }
+        List<Object> objList = Arrays.asList(obj);
+        for (int i = 0; i < objList.size(); i++) {
+            if(ObjectUtil.isNotNullOrEmpty(objList.get(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+    /**
+     * 描述：有一个为null 返回为true
+     * 作者 ：kangzz
+     * 日期 ：2016-12-26 22:46:45
+     */
+    public static Boolean orNull(Object... obj){
+        if(ObjectUtil.isNull(obj)){
+            return true;
+        }
+        List<Object> objList = Arrays.asList(obj);
+        for (int i = 0; i < objList.size(); i++) {
+            if(ObjectUtil.isNull(objList.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * 描述：有一个为null或者为空 返回为true
+     * 作者 ：kangzz
+     * 日期 ：2016-12-26 22:47:01
+     */
+    public static Boolean orNullOrEmpty(Object... obj){
+        if(ObjectUtil.isNull(obj)){
+            return true;
+        }
+        List<Object> objList = Arrays.asList(obj);
+        for (int i = 0; i < objList.size(); i++) {
+            if(ObjectUtil.isNullOrEmpty(objList.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * 描述：全部不为null 返回为true
+     * 作者 ：kangzz
+     * 日期 ：2016-12-26 22:45:36
+     */
+    public static Boolean andNotNull(Object... obj){
+        if(ObjectUtil.isNull(obj)){
+            return false;
+        }
+        List<Object> objList = Arrays.asList(obj);
+        for (int i = 0; i < objList.size(); i++) {
+            if(ObjectUtil.isNull(objList.get(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+    /**
+     * 描述：全部不为null或空 返回为true
+     * 作者 ：kangzz
+     * 日期 ：2016-12-26 22:46:27
+     */
+    public static Boolean andNotNullOrEmpty(Object... obj){
+        if(ObjectUtil.isNull(obj)){
+            return false;
+        }
+        List<Object> objList = Arrays.asList(obj);
+        for (int i = 0; i < objList.size(); i++) {
+            if(ObjectUtil.isNullOrEmpty(objList.get(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+    /**
      * 描述：相当于三元判断 封装null为false的判断
      * 作者 ：kangzz
      * 日期 ：2016-12-26 20:20:06
@@ -91,5 +193,6 @@ public class BooleanUtils {
             return nullValue;
         }
     }
+
 
 }
