@@ -9,7 +9,7 @@
     <artifactId>mtool</artifactId>
     <packaging>jar</packaging>
     <name>mtool</name>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <description>提供丰富的Java工具方法</description>
     <url>https://github.com/kangzz/mtool</url>
     <build>
@@ -221,6 +221,8 @@
                             </execution>
                         </executions>
                     </plugin>
+
+                    mvn install:install-file -Dfile=/Users/kangzz/Pro/Personal/mtool/target/mtool-1.0.2.jar -DgroupId=com.kangzz -DartifactId=mtool -Dversion=1.0.2 -Dpackaging=jar -DgeneratePom=true
                      -->
                 </plugins>
             </build>

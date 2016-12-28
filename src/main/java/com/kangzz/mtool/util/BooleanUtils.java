@@ -126,7 +126,7 @@ public class BooleanUtils {
      * 日期 ：2016-12-26 22:47:01
      */
     public static Boolean orNullOrEmpty(Object... obj){
-        if(ObjectUtil.isNull(obj)){
+        if(ObjectUtil.isNullOrEmpty(obj)){
             return true;
         }
         List<Object> objList = Arrays.asList(obj);
@@ -160,7 +160,7 @@ public class BooleanUtils {
      * 日期 ：2016-12-26 22:46:27
      */
     public static Boolean andNotNullOrEmpty(Object... obj){
-        if(ObjectUtil.isNull(obj)){
+        if(ObjectUtil.isNullOrEmpty(obj)){
             return false;
         }
         List<Object> objList = Arrays.asList(obj);
