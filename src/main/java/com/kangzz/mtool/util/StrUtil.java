@@ -1298,33 +1298,6 @@ public class StrUtil {
 	}
 
 	/**
-	 * 描述：根据指定切分字符拆分字符串为List
-	 * 作者 ：kangzz
-	 * 日期 ：2016-11-02 21:22:00
-	 */
-	public static List<String> changeStrToList(String str,String sepStr){
-		List<String> returnList = new ArrayList<String>();
-		if(BooleanUtils.orNullOrEmpty(str,sepStr)){
-			throw new UtilException(StrUtil.format("StrUtil changeStrToList [{}] and [{}] must not be null!", str,sepStr));
-		}
-		String[] strArr = str.split(sepStr);
-		for (int i = 0; i < strArr.length; i++) {
-			returnList.add(strArr[i]);
-		}
-		return returnList;
-	}
-	/**
-	 * 描述：split
-	 * 作者 ：kangzz
-	 * 日期 ：2016-11-02 21:22:00
-	 */
-	public static String[] splitStr(String str,String sepStr){
-		if(BooleanUtils.orNullOrEmpty(str,sepStr)){
-			throw new UtilException(StrUtil.format("StrUtil splitStr [{}] and [{}] must not be null!", str,sepStr));
-		}
-		return str.split(sepStr);
-	}
-	/**
 	 * 描述：字符串中是否包含 如果均为null 返回true
 	 * 作者 ：kangzz
 	 * 日期 ：2016-12-26 19:23:19
