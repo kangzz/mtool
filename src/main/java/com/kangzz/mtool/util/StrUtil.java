@@ -1312,6 +1312,17 @@ public class StrUtil {
 		return returnList;
 	}
 	/**
+	 * 描述：split
+	 * 作者 ：kangzz
+	 * 日期 ：2016-11-02 21:22:00
+	 */
+	public static String[] splitStr(String str,String sepStr){
+		if(isBlank(str)){
+			return new String[0];
+		}
+		return str.split(sepStr);
+	}
+	/**
 	 * 描述：字符串中是否包含 如果均为null 返回true
 	 * 作者 ：kangzz
 	 * 日期 ：2016-12-26 19:23:19
