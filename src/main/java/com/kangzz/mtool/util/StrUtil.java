@@ -1,5 +1,8 @@
 package com.kangzz.mtool.util;
 
+import com.kangzz.mtool.convert.Convert;
+import com.kangzz.mtool.exception.UtilException;
+
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.ByteBuffer;
@@ -1301,10 +1304,9 @@ public class StrUtil {
 	 */
 	public static List<String> changeStrToList(String str,String sepStr){
 		List<String> returnList = new ArrayList<String>();
-		if(isBlank(str)){
-			return returnList;
+		if(BooleanUtils.orNullOrEmpty(str,sepStr)){
+			throw new UtilException(StrUtil.format("StrUtil changeStrToList [{}] and [{}] must not be null!", str,sepStr));
 		}
-
 		String[] strArr = str.split(sepStr);
 		for (int i = 0; i < strArr.length; i++) {
 			returnList.add(strArr[i]);
@@ -1317,8 +1319,8 @@ public class StrUtil {
 	 * 日期 ：2016-11-02 21:22:00
 	 */
 	public static String[] splitStr(String str,String sepStr){
-		if(isBlank(str)){
-			return new String[0];
+		if(BooleanUtils.orNullOrEmpty(str,sepStr)){
+			throw new UtilException(StrUtil.format("StrUtil splitStr [{}] and [{}] must not be null!", str,sepStr));
 		}
 		return str.split(sepStr);
 	}
