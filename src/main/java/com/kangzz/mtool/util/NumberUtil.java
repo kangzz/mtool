@@ -5,6 +5,8 @@ import com.kangzz.mtool.exception.UtilException;
 import org.apache.commons.lang.math.NumberUtils;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 描述：数字处理util
@@ -176,6 +178,25 @@ public class NumberUtil{
         return Convert.toBigDecimal(v1,BigDecimal.ZERO).add(Convert.toBigDecimal(v2,BigDecimal.ZERO));
     }
     /**
+     * 描述：提供精确的加法运算。
+     * @param v1 被加数
+     * @param values 加数
+     * @return 多个数据求和
+     * 作者 ：kangzz
+     * 日期 ：2016-09-27 15:38:17
+     */
+    public static BigDecimal addAll(Object v1, Object... values) {
+        List<Object> valueList = (values != null ? Arrays.asList(values) : null);
+        BigDecimal returnValue = Convert.toBigDecimal(v1,BigDecimal.ZERO);
+        if(CollectionUtil.isNotEmpty(valueList)){
+            return returnValue;
+        }
+        for (int i = 0; i < valueList.size(); i++) {
+            returnValue = returnValue.add(Convert.toBigDecimal(valueList.get(i),BigDecimal.ZERO));
+        }
+        return returnValue;
+    }
+    /**
      * 描述：提供精确的减法运算。
      * @param v1 被减数
      * @param v2 减数
@@ -189,6 +210,22 @@ public class NumberUtil{
             throw new UtilException(StrUtil.format("NumberUtil [{}] subtract [{}] error!", Convert.toStr(v1,null)),Convert.toStr(v2,null));
         }
         return bigDecimal_v1.subtract(Convert.toBigDecimal(v2,BigDecimal.ZERO));
+    }
+    /**
+     * 描述：减法
+     * 作者 ：kangzz
+     * 日期 ：2016-12-29 10:12:26
+     */
+    public static BigDecimal subtractAll(Object v1, Object... values) {
+        List<Object> valueList = (values != null ? Arrays.asList(values) : null);
+        BigDecimal returnValue = Convert.toBigDecimal(v1,BigDecimal.ZERO);
+        if(CollectionUtil.isNotEmpty(valueList)){
+            return returnValue;
+        }
+        for (int i = 0; i < valueList.size(); i++) {
+            returnValue = returnValue.subtract(Convert.toBigDecimal(valueList.get(i),BigDecimal.ZERO));
+        }
+        return returnValue;
     }
     /**
      * 描述：提供精确的乘法运算。
