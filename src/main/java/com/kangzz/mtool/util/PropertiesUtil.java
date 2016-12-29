@@ -4,7 +4,7 @@ package com.kangzz.mtool.util;
 
 import com.kangzz.mtool.exception.UtilException;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang.Validate;
+import org.apache.commons.lang3.Validate;
 import org.apache.log4j.Logger;
 
 import java.io.InputStream;

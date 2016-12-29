@@ -17,7 +17,7 @@ package com.kangzz.mtool.util;
 
 
 import com.kangzz.mtool.exception.UtilException;
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.Random;
 

@@ -3,7 +3,7 @@ package com.kangzz.mtool.util;
 
 import com.kangzz.mtool.exception.UtilException;
 import com.kangzz.mtool.io.FastByteArrayOutputStream;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

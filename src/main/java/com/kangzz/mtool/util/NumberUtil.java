@@ -2,7 +2,7 @@ package com.kangzz.mtool.util;
 
 import com.kangzz.mtool.convert.Convert;
 import com.kangzz.mtool.exception.UtilException;
-import org.apache.commons.lang.math.NumberUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
