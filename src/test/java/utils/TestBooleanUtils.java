@@ -52,5 +52,7 @@ public class TestBooleanUtils {
                 BooleanUtils.orNull(list,map));
         Console.log("orNull_2:"+
                 BooleanUtils.orNullOrEmpty(new HashMap(),map));
+
+        Console.log("orEquals:"+BooleanUtils.orEquals("contract","123",12345,"contract"));
     }
 }

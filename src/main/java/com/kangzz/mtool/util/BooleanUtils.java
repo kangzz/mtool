@@ -172,6 +172,26 @@ public class BooleanUtils {
         return true;
     }
     /**
+     * 描述：有一个匹配即返回true
+     * 作者 ：kangzz
+     * 日期 ：2016-12-29 10:36:54
+     */
+    public static <T> Boolean orEquals(T baseObj, T... obj){
+        if(andNull(baseObj,obj)){
+            return true;
+        }
+        if(ObjectUtil.isNull(obj)){
+            return false;
+        }
+        List<T> objList = Arrays.asList(obj);
+        for (int i = 0; i < objList.size(); i++) {
+            if(ObjectUtil.equals(baseObj,objList.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
      * 描述：相当于三元判断 封装null为false的判断
      * 作者 ：kangzz
      * 日期 ：2016-12-26 20:20:06
