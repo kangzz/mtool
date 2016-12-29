@@ -60,33 +60,34 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- 模板引擎 -->
+        <!-- 模板引擎
         <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
             <version>1.7</version>
             <scope>provided</scope>
         </dependency>
+         -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- 数据库连接池 -->
+        <!-- 数据库连接池
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.0.16</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- MongoDB Java客户端 -->
+        </dependency>-->
+        <!-- MongoDB Java客户端
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
         <!-- 定时任务包，类似crontab -->
         <dependency>
             <groupId>it.sauronsoftware.cron4j</groupId>
