@@ -186,4 +186,12 @@ public class ThreadUtil {
 			return new ThreadLocal<T>();
 		}
 	}
+	/**
+	 * 描述：线程重新赋值名字
+	 * 作者 ：kangzz
+	 * 日期 ：2017-01-03 20:18:26
+	 */
+	public static void resetThreadName(Thread thread){
+		thread.setName(thread.getName()+"_"+StrUtil.simpleUUID());
+	}
 }
