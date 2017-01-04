@@ -10,7 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IdCardUtils {
-	/** 中国公民身份证号码最小长度。 */  
+    private IdCardUtils() {
+    }
+
+    /** 中国公民身份证号码最小长度。 */
     public static final int CHINA_ID_MIN_LENGTH = 15;  
   
     /** 中国公民身份证号码最大长度。 */  
