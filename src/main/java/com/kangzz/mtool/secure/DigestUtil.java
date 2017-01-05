@@ -18,6 +18,9 @@ import java.security.NoSuchAlgorithmException;
  */
 public class DigestUtil {
 
+	private DigestUtil() {
+	}
+
 	public static enum Algorithm {
 		MD5("MD5"), SHA256("SHA-256"), SHA348("SHA-348"), SHA512("SHA-512"), SHA1("SHA-1");
 

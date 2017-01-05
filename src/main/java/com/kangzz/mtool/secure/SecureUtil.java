@@ -15,6 +15,9 @@ import java.util.UUID;
  */
 public class SecureUtil {
 
+	private SecureUtil() {
+	}
+
 	/**
 	 * 描述：对称加密
 	 * 作者 ：kangzz
