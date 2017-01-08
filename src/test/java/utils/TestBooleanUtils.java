@@ -54,5 +54,20 @@ public class TestBooleanUtils {
                 BooleanUtils.orNullOrEmpty(new HashMap(),map));
 
         Console.log("orEquals:"+BooleanUtils.orEquals("contract","123",12345,"contract"));
+
+        List<Thread> listThread = new ArrayList<Thread>();
+        for (int i = 0; i < 100; i++) {
+            Thread t =  new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Console.log("false:"+BooleanUtils.andNotNull(null,new Object()));
+                    Console.log("true:"+BooleanUtils.andNotNull(1,"123"));
+                }
+            });
+            listThread.add(t);
+        }
+        for (int i = 0; i < 100; i++) {
+            listThread.get(i).start();
+        }
     }
 }
