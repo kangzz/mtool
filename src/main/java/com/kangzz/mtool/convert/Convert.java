@@ -417,7 +417,7 @@ public class Convert {
      * @return 结果
      */
     public static BigDecimal toBigDecimal(Object value, BigDecimal defaultValue) {
-        return convert(BigDecimal.class, defaultValue, defaultValue);
+        return convert(BigDecimal.class, value, defaultValue);
     }
 
     /**

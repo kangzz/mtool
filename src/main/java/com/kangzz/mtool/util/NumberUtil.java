@@ -354,5 +354,73 @@ public class NumberUtil{
         }
         return Convert.digitUppercase(value);
     }
+    /**
+     * 描述：比较并返回更大的那个数字
+     * 作者 ：kangzz
+     * 日期 ：2017-01-16 20:54:19
+     */
+    public static Number getLargerNumber(Number num1, Number num2){
+        if(ObjectUtil.isNull(num1)){
+            return num2;
+        }
+        if(ObjectUtil.isNull(num2)){
+            return num1;
+        }
+        if(isCompareToGtOrEqual(num1,num2)){
+            return num1;
+        }else {
+            return num2;
+        }
+    }
+    /**
+     * 描述：比较并返回更小的那个数字
+     * 作者 ：kangzz
+     * 日期 ：2017-01-16 21:00:21
+     */
+    public static Number getSmallNumber(Number num1, Number num2){
+        if(ObjectUtil.isNull(num1)){
+            return num2;
+        }
+        if(ObjectUtil.isNull(num2)){
+            return num1;
+        }
+        if(isCompareToGtOrEqual(num1,num2)){
+            return num2;
+        }else {
+            return num1;
+        }
+    }
+    /**
+     * 描述：获取最大值
+     * 作者 ：kangzz
+     * 日期 ：2017-01-16 21:07:36
+     */
+    public static Number getMaxNumber(Number... values){
+        List<Number> valueList = (values != null ? Arrays.asList(values) : null);
+        if(ObjectUtil.isNullOrEmpty(valueList)){
+            return null;
+        }
+        Number returnNumber = null;
+        for (int i = 0; i < valueList.size(); i++) {
+            returnNumber = getLargerNumber(returnNumber,valueList.get(i));
+        }
+        return returnNumber;
+    }
+    /**
+     * 描述：获取最大值
+     * 作者 ：kangzz
+     * 日期 ：2017-01-16 21:07:36
+     */
+    public static Number getMinNumber(Number... values){
+        List<Number> valueList = (values != null ? Arrays.asList(values) : null);
+        if(ObjectUtil.isNullOrEmpty(valueList)){
+            return null;
+        }
+        Number returnNumber = null;
+        for (int i = 0; i < valueList.size(); i++) {
+            returnNumber = getSmallNumber(returnNumber,valueList.get(i));
+        }
+        return returnNumber;
+    }
 
 }
