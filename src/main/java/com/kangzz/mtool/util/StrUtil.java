@@ -1306,9 +1306,11 @@ public class StrUtil {
 		if(ObjectUtil.isNull(str)){
 			if(ObjectUtil.isNull(containsStr)){
 				return true;
+			}else {
+				return false;
 			}
-			return false;
+		}else {
+			return str.contains(containsStr);
 		}
-		return str.indexOf(containsStr) > -1;
 	}
 }
