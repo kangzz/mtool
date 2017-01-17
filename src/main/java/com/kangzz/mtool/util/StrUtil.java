@@ -1303,8 +1303,8 @@ public class StrUtil {
 	 * 日期 ：2016-12-26 19:23:19
 	 */
 	public static Boolean contains(String str,String containsStr){
-		if(isBlank(str)){
-			if(isBlank(containsStr)){
+		if(ObjectUtil.isNull(str)){
+			if(ObjectUtil.isNull(containsStr)){
 				return true;
 			}
 			return false;

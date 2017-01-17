@@ -36,6 +36,7 @@ public class TestMapUtil {
         }
 
         Console.log("contains:"+StrUtil.contains("12345552325","234"));
+        Console.log("contains:"+StrUtil.contains("123","2"));
     }
 
 
