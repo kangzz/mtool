@@ -531,7 +531,7 @@ public class IdCardUtils {
      * @return 性别(M-男，F-女，N-未知) 
      */  
     public static String getGenderByIdCard(String idCard) {  
-        String sGender = "N";  
+        String sGender;
         if (idCard.length() == CHINA_ID_MIN_LENGTH) {  
             idCard = conver15CardTo18(idCard);  
         }  
@@ -552,7 +552,7 @@ public class IdCardUtils {
      */  
     public static String getProvinceByIdCard(String idCard) {  
         int len = idCard.length();  
-        String sProvince = null;  
+        String sProvince;
         String sProvinNum = "";  
         if (len == CHINA_ID_MIN_LENGTH || len == CHINA_ID_MAX_LENGTH) {  
             sProvinNum = idCard.substring(0, 2);  
