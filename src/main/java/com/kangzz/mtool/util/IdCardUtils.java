@@ -124,7 +124,7 @@ public class IdCardUtils {
      * @return 18位身份编码 
      */  
     public static String conver15CardTo18(String idCard) {  
-        String idCard18 = "";  
+        String idCard18;
         if (idCard.length() != CHINA_ID_MIN_LENGTH) {  
             return null;  
         }  
@@ -306,10 +306,10 @@ public class IdCardUtils {
         Integer iStart = twFirstCode.get(start);  
         Integer sum = iStart / 10 + (iStart % 10) * 9;  
         char[] chars = mid.toCharArray();  
-        Integer iflag = 8;  
+        Integer flag = 8;
         for (char c : chars) {  
-            sum = sum + Integer.valueOf(c + "") * iflag;  
-            iflag--;  
+            sum = sum + Integer.valueOf(c + "") * flag;
+            flag--;
         }  
         return (sum % 10 == 0 ? 0 : (10 - sum % 10)) == Integer.valueOf(end) ? true : false;  
     }  
@@ -329,7 +329,7 @@ public class IdCardUtils {
      */  
     public static boolean validateHKCard(String idCard) {  
         String card = idCard.replaceAll("[//(|//)]", "");  
-        Integer sum = 0;  
+        Integer sum;
         if (card.length() == 9) {  
             sum = (Integer.valueOf(card.substring(0, 1).toUpperCase().toCharArray()[0]) - 55) * 9  
                     + (Integer.valueOf(card.substring(1, 2).toUpperCase().toCharArray()[0]) - 55) * 8;  
@@ -447,7 +447,7 @@ public class IdCardUtils {
      * @return 年龄 
      */  
     public static int getAgeByIdCard(String idCard) {  
-        int iAge = 0;  
+        int iAge;
         if (idCard.length() == CHINA_ID_MIN_LENGTH) {  
             idCard = conver15CardTo18(idCard);  
         }  
