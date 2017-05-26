@@ -11,7 +11,7 @@ import org.junit.Test;
 public class TestIdCardUtils {
     @Test
     public void test(){
-        String idCard = "211421198811242355";
+        String idCard = "110107199712050628";
         Console.log("验证日期是否是生日:"+DateUtil.isValidBirthdayDate(2017,2,29));
         Console.log("验证身份证(香港):"+IdCardUtils.validateCard("A5601463")+"");
         Console.log("验证身份证(澳门):"+IdCardUtils.validateCard("5215299(8)")+"");

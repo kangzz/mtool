@@ -407,7 +407,7 @@ public class NumberUtil{
         return returnNumber;
     }
     /**
-     * 描述：获取最大值
+     * 描述：获取最小值
      * 作者 ：kangzz
      * 日期 ：2017-01-16 21:07:36
      */
