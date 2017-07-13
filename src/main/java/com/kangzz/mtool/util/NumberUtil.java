@@ -422,5 +422,19 @@ public class NumberUtil{
         }
         return returnNumber;
     }
-
+    /**
+     * 描述：获取num的N分之一的第一期,后面每期可除尽,多余或少的部分放在第一期
+     * @param number 需要计算的数值
+     * @param rate 分期数
+     * @param scale 保留小数位
+     * @param roundingModel 小数位取值方式
+     * 作者 ：kangzz
+     * 日期 ：2017-07-13 15:40:28
+     */
+    public static BigDecimal get1OfRate(BigDecimal number, Integer rate, int scale, int roundingModel){
+        if(rate == null || rate <= 1 ){
+            return number;
+        }
+        return number.subtract(number.divide(BigDecimal.valueOf(rate),scale,roundingModel).multiply(BigDecimal.valueOf(rate - 1)));
+    }
 }
