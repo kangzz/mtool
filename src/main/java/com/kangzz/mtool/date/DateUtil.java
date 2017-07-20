@@ -1,13 +1,11 @@
 package com.kangzz.mtool.date;
 
 
+import com.kangzz.mtool.util.CollectionUtil;
 import com.kangzz.mtool.util.StrUtil;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.LinkedHashSet;
+import java.util.*;
 
 /**
  * 时间工具类
@@ -515,7 +513,7 @@ public class DateUtil {
 
 	/**
 	 * 判断两个日期相差的时长<br/>
-	 * 返回 minuend - subtrahend 的差
+	 * 返回 minuend - subtrahend 的差 不足24小时不算一天,不足7天不算一周
 	 * 
 	 * @param subtrahend 减数日期
 	 * @param minuend 被减数日期
@@ -743,7 +741,27 @@ public class DateUtil {
 		}
 		return isValidDate(iYear, iMonth, iDate);
 	}
-
+	/**
+	 * 描述：获取开始结束日期之间的所有天数,包含开始结束时间所在天
+	 * 作者 ：kangzz
+	 * 日期 ：2017-07-20 10:41:35
+	 */
+	public static ArrayList<Date> getDiffDates(Date startDate, Date endDate){
+		if(startDate == null || endDate == null){
+			return CollectionUtil.newArrayList();
+		}
+		startDate = beginOfDay(startDate);
+		endDate = beginOfDay(endDate);
+		long days = diff(startDate,endDate,DateUnit.DAY);
+		if(days < 0){
+			return CollectionUtil.newArrayList();
+		}
+		ArrayList<Date> list = CollectionUtil.newArrayList();
+		for (int i = 0; i < (days+1); i++) {
+			list.add(offsiteDay(startDate,i));
+		}
+		return list;
+	}
 	// ------------------------------------------------------------------------ Private method start
 	/**
 	 * 获得指定日期年份和季节<br>
