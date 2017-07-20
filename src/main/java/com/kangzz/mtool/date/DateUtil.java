@@ -3,6 +3,7 @@ package com.kangzz.mtool.date;
 
 import com.kangzz.mtool.util.CollectionUtil;
 import com.kangzz.mtool.util.StrUtil;
+import org.junit.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -742,23 +743,24 @@ public class DateUtil {
 		return isValidDate(iYear, iMonth, iDate);
 	}
 	/**
-	 * 描述：获取开始结束日期之间的所有天数,包含开始结束时间所在天
+	 * 描述：获取开始结束日期之间的所有天数,包含开始结束时间所在天,无先后顺序要求,返回时间为从小到大
 	 * 作者 ：kangzz
 	 * 日期 ：2017-07-20 10:41:35
 	 */
-	public static ArrayList<Date> getDiffDates(Date startDate, Date endDate){
-		if(startDate == null || endDate == null){
+	public static ArrayList<Date> getDiffDays(Date date1, Date date2){
+		if(date1 == null || date2 == null){
 			return CollectionUtil.newArrayList();
 		}
-		startDate = beginOfDay(startDate);
-		endDate = beginOfDay(endDate);
-		long days = diff(startDate,endDate,DateUnit.DAY);
+		date1 = beginOfDay(date1);
+		date2 = beginOfDay(date2);
+		long days = diff(date1,date2,DateUnit.DAY);
 		if(days < 0){
-			return CollectionUtil.newArrayList();
+			days = Math.abs(days);
+			date1 = date2;
 		}
 		ArrayList<Date> list = CollectionUtil.newArrayList();
 		for (int i = 0; i < (days+1); i++) {
-			list.add(offsiteDay(startDate,i));
+			list.add(offsiteDay(date1,i));
 		}
 		return list;
 	}
